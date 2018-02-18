@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "294612191767",
+    "firebase_url": "https://golfapp-77fe2.firebaseio.com",
+    "project_id": "golfapp-77fe2",
+    "storage_bucket": "golfapp-77fe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294612191767:android:b2a172d35fd2bcfa",
+        "android_client_info": {
+          "package_name": "com.example.sullo.golfapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294612191767-8tq2jdemm85mmv3v1p7egm6vnq32nd48.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sullo.golfapp",
+            "certificate_hash": "3ea95570d81762cfce4404d46b4bf8f7a988a6a0"
+          }
+        },
+        {
+          "client_id": "294612191767-ototg293q4m18hpjkggl1d3pv6gsoeb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEN03uAK5QbtrLTyyZyF-haaQqDIr2BHI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294612191767-ototg293q4m18hpjkggl1d3pv6gsoeb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
