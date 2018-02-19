@@ -89,7 +89,7 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked Distance Measure", Toast.LENGTH_LONG).show();
-                Intent distanceM = new Intent(MainScreen.this, Rounds.class);
+                Intent distanceM = new Intent(MainScreen.this, DistanceMeasure.class);
                 startActivity(distanceM);
             }
         });
