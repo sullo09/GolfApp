@@ -14,8 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
-
 public class MainScreen extends AppCompatActivity {
 
     private DatabaseReference mDatabaseReference;
@@ -89,8 +87,8 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked Distance Measure", Toast.LENGTH_LONG).show();
-                Intent distanceM = new Intent(MainScreen.this, DistanceMeasure.class);
-                startActivity(distanceM);
+                Intent YardageFinder = new Intent(MainScreen.this, YardageFinder.class);
+                startActivity(YardageFinder);
             }
         });
     }

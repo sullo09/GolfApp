@@ -1,0 +1,31 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <!-- second coordinate  -->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_lat2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="30sp"-->
+        <!--android:text="Latitude N/A"-->
+        <!--/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_long2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="30sp"-->
+        <!--android:text="Longitude N/A"-->
+        <!--/>-->
+    <!--<Button-->
+        <!--android:id="@+id/endBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="End"-->
+        <!--/>-->
+</LinearLayout>
