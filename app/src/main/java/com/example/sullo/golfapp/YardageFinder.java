@@ -24,8 +24,11 @@ public class YardageFinder extends AppCompatActivity {
     private LocationManager lm;
 
 
+
     //	private	method that	will add a location	listener to	the	location manager
     private void addLocationListener() {
+
+
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -42,15 +45,6 @@ public class YardageFinder extends AppCompatActivity {
             public void onLocationChanged(final Location location) {
 //	the	location of	the	device has changed so update the textviews to reflect this
 
-//                Location locationA = new Location("point A");
-//                double lngA;
-//                locationA.setLatitude(lngA);
-//                locationA.setLongitude(lngA);
-//                Location locationB = new Location("point B");
-//                locationB.setLatitude(latB);
-//                LocationB.setLongitude(lngB);
-//                distance = locationA.distanceTo(locationB) ;
-
 
                 firstPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -59,6 +53,7 @@ public class YardageFinder extends AppCompatActivity {
                         tv_long.setText("Longitude: " + location.getLongitude());
                     }
                 });
+
                 secondPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -95,7 +90,6 @@ public class YardageFinder extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

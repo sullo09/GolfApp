@@ -40,9 +40,9 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
-        LatLng oldConna = new LatLng(53.215725, -6.137972);
-        mMap.addMarker(new MarkerOptions().position(oldConna).title("Marker in Old Conna Golf Club")
+        LatLng MountWolseley = new LatLng(52.852511, -6.894009);
+        mMap.addMarker(new MarkerOptions().position(MountWolseley).title("Mount Wolseyey Golf Club")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(oldConna, 16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(MountWolseley, 16));
     }
 }
