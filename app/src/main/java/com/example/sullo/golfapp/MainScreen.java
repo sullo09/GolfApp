@@ -19,7 +19,7 @@ public class MainScreen extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mDatabase;
     private FirebaseAuth mAuth;
-    private FirebaseUser mUser; 
+    private FirebaseUser mUser;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adaptor;
