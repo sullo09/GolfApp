@@ -18,8 +18,8 @@
     <string name="section_format">Hello World from section: %1$d</string>
 
 
-    <string name="tv_lat_text">Latitude:	N/A</string>
-    <string name="tv_long_text">Longitude:	N/A</string>
+    <string name="tv_lat_text">Latitude: N/Aaaa</string>
+    <string name="tv_long_text">Longitude: N/A</string>
 
     <string-array name="county">
         <item>Dublinn</item>
