@@ -22,14 +22,14 @@
     <string name="tv_long_text">Longitude: N/A</string>
 
     <string-array name="county">
-        <item>Dublinn</item>
+        <item>Dublin</item>
         <item>Wicklow</item>
         <item>Cork</item>
         <item>Wexford</item>
         <item>Waterford</item>
         <item>Kerry</item>
         <item>Galwayy</item>
-        <item>Meathhh</item>
+        <item>Meath</item>
         <item>Sligo</item>
 
     </string-array>
