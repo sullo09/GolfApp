@@ -13,12 +13,21 @@ public class PlayRound extends AppCompatActivity {
     Button singles, foursomes, group;
     Button play;
 
-//    for pop up
+//  pop up singles
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private EditText name;
     private EditText handicap;
-    private Button saveByutton;
+    private Button saveButton;
+
+//  pop up for foursomes
+    private AlertDialog.Builder dialogBuilderFoursomes;
+    private AlertDialog dialogFoursomes;
+    private EditText nameFoursomes1;
+    private EditText handicapFoursomes1;
+    private EditText nameFoursomes2;
+    private EditText handicapFoursomes2;
+    private Button saveButtonFoursomes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +42,13 @@ public class PlayRound extends AppCompatActivity {
         singles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createPopupDialog();
+                createPopupDialogSingles();
             }
         });
-        group.setOnClickListener(new View.OnClickListener() {
+        foursomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createPopupDialog();
+                createPopupDialogFoursomes();
             }
         });
 
@@ -52,24 +61,47 @@ public class PlayRound extends AppCompatActivity {
             }
         });
     }
-
-    private void createPopupDialog(){
+//singles pop up
+    private void createPopupDialogSingles(){
         dialogBuilder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.pop_up_details, null);
         name = (EditText) view.findViewById(R.id.name);
         handicap = (EditText) view.findViewById(R.id.handicap);
-        saveByutton = (Button) view.findViewById(R.id.saveButton);
+        saveButton = (Button) view.findViewById(R.id.saveButton);
 
         dialogBuilder.setView(view);
         dialog = dialogBuilder.create();
         dialog.show();
 
-        saveByutton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//          save details and display on screen
+                //save details and display on screen playRound
 
             }
         });
+    }
+
+//foursomes pop up
+    private void createPopupDialogFoursomes(){
+        dialogBuilderFoursomes = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.pop_up_details_foursome, null);
+        nameFoursomes1 = (EditText) view.findViewById(R.id.nameFoursomes1);
+        handicapFoursomes1 = (EditText) view.findViewById(R.id.handicapFoursomes1);
+        nameFoursomes2 = (EditText) view.findViewById(R.id.nameFoursomes2);
+        handicapFoursomes2 = (EditText) view.findViewById(R.id.handicapFoursomes2);
+        saveButtonFoursomes = (Button) view.findViewById(R.id.saveButtonFoursomes);
+
+        dialogBuilderFoursomes.setView(view);
+        dialogFoursomes = dialogBuilderFoursomes.create();
+        dialogFoursomes.show();
+
+        saveButtonFoursomes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //save details and display on screen playRound
+            }
+        });
+
     }
 }
