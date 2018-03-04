@@ -34,4 +34,19 @@
 
     </string-array>
 
+    <!-- play round buttons start -->
+    <string name="button_one">Singles</string>
+    <string name="button_two">Fourball</string>
+    <string name="button_three">Group</string>
+    <string name="playgame">PLay</string>
+    <!-- play round buttons end -->
+
+    <!-- popup up details start -->
+    <string name="enter_item">Player Details</string>
+    <string name="hint_name">Enter Name</string>
+    <string name="handicap_hint">Enter Handicap</string>
+    <string name="save_title">Save</string>
+
+    <!-- popup up details end -->
+
 </resources>

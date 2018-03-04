@@ -47,7 +47,7 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked New Round", Toast.LENGTH_LONG).show();
-                Intent startNewRound = new Intent(MainScreen.this, Rounds.class);
+                Intent startNewRound = new Intent(MainScreen.this, Courses.class);
                 startActivity(startNewRound);
             }
         });

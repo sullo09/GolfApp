@@ -50,7 +50,18 @@
             android:name=".Rounds"
             android:label="New Round" />
         <activity android:name=".DistanceMeasured" />
-        <activity android:name=".YardageFinder"></activity>
+        <activity android:name=".YardageFinder" />
+        <activity
+            android:name=".Courses"
+            android:label="Courses" />
+        <activity
+            android:name=".PlayRound"
+            android:label="Course Name Here" />
+        <activity android:name=".PlayRoundDetails" />
+        <activity
+            android:name=".PlayingRound"
+            android:label=" " />
+
     </application>
 
 </manifest>

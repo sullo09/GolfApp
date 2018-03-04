@@ -95,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     login(email, pwd);
                 }
                 else {
-
                 }
-
             }
         });
     }
