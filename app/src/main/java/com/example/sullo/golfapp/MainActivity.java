@@ -20,6 +20,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
@@ -38,11 +46,15 @@ public class MainActivity extends AppCompatActivity {
 /*Fields for app interface end*/
 
 
+
     /**/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
 /* instantiate*/
         LoginEmail = (EditText) findViewById(R.id.LoginEmail);
@@ -99,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
 
     //login method
     private void login(String email, String pwd) {

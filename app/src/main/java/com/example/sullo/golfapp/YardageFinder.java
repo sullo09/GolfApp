@@ -1,5 +1,7 @@
 package com.example.sullo.golfapp;
 
+//used for the distance measurement
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -21,14 +23,28 @@ public class YardageFinder extends AppCompatActivity {
     private TextView tv_lat2;
     private TextView tv_long2;
     private Button secondPoint;
+    private TextView result;
     private LocationManager lm;
 
 
 
+    Float lat1 = null;
+    Float long1 = null;
+    Float lat2 = null;
+    Float long2 = null;
+
+    Float finalLat = null;
+    Float finalLong = null;
+
+
+
+
+
+    Location loc1 = new Location("");
+    Location loc2 = new Location("");
+
     //	private	method that	will add a location	listener to	the	location manager
     private void addLocationListener() {
-
-
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -45,22 +61,52 @@ public class YardageFinder extends AppCompatActivity {
             public void onLocationChanged(final Location location) {
 //	the	location of	the	device has changed so update the textviews to reflect this
 
+//                Location loc1 = new Location("");
+//                loc1.setLatitude(lat1);
+//                loc1.setLongitude(long1);
+//
+//                Location loc2 = new Location("");
+//                loc2.setLatitude(lat2);
+//                loc2.setLongitude(long2);
+//
+//                final float distanceInMeters = loc1.distanceTo(loc2);
+
 
                 firstPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        tv_lat.setText("Latutude " + location.getLatitude());
-                        tv_long.setText("Longitude: " + location.getLongitude());
+
+                        tv_lat.setText("" + location.getLatitude());
+                        tv_long.setText("" + location.getLongitude());
+
+                        String str = tv_lat.getText().toString();
+                        String str1 = tv_long.getText().toString();
+                        lat1 = Float.parseFloat(str);
+                        long1 = Float.parseFloat(str1);
+
                     }
                 });
 
                 secondPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        tv_lat2.setText("Latutude " + location.getLatitude());
-                        tv_long2.setText("Longitude: " + location.getLongitude());
+                        tv_lat2.setText("" + location.getLatitude());
+                        tv_long2.setText("" + location.getLongitude());
+
+                        String str2 = tv_lat.getText().toString();
+                        String str3 = tv_long.getText().toString();
+                        lat2 = Float.parseFloat(str2);
+                        long2 = Float.parseFloat(str3);
+
+                        finalLat = lat2-lat1;
+                        finalLong = long2 - long1;
+
+                        result.setText(""+ finalLat);
+                        result.setText(""+ finalLong);
+
                     }
                 });
+
             }
 
             @Override
@@ -96,15 +142,16 @@ public class YardageFinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yardage_finder);
 
-        tv_lat =	(TextView)	findViewById(R.id.tv_lat);
-        tv_long =	(TextView)	findViewById(R.id.tv_long);
+        tv_lat = (TextView) findViewById(R.id.tv_lat);
+        tv_long = (TextView) findViewById(R.id.tv_long);
         firstPoint = (Button) findViewById(R.id.firstPoint);
-        tv_lat2 =	(TextView)	findViewById(R.id.tv_lat2);
-        tv_long2 =	(TextView)	findViewById(R.id.tv_long2);
+        tv_lat2 = (TextView) findViewById(R.id.tv_lat2);
+        tv_long2 = (TextView) findViewById(R.id.tv_long2);
         secondPoint = (Button) findViewById(R.id.secondPoint);
-        lm =	(LocationManager)	getSystemService(Context.LOCATION_SERVICE);
+        result = (TextView) findViewById(R.id.result);
+        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-//	add	in	the	location	listener
+//	add in the location listener
         addLocationListener();
 
     }
