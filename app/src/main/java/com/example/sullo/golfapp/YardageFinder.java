@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class YardageFinder extends AppCompatActivity {
 
-    //	private	fields	of	the	class
+//	private	fields	of	the	class
     private TextView tv_lat;
     private TextView tv_long;
     private Button firstPoint;
@@ -26,24 +26,29 @@ public class YardageFinder extends AppCompatActivity {
     private TextView result;
     private LocationManager lm;
 
-
-
-    Float lat1 = null;
-    Float long1 = null;
-    Float lat2 = null;
-    Float long2 = null;
-
-    Float finalLat = null;
-    Float finalLong = null;
-
-
-
-
-
     Location loc1 = new Location("");
     Location loc2 = new Location("");
 
-    //	private	method that	will add a location	listener to	the	location manager
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_yardage_finder);
+
+        tv_lat = (TextView) findViewById(R.id.tv_lat);
+        tv_long = (TextView) findViewById(R.id.tv_long);
+        firstPoint = (Button) findViewById(R.id.firstPoint);
+        tv_lat2 = (TextView) findViewById(R.id.tv_lat2);
+        tv_long2 = (TextView) findViewById(R.id.tv_long2);
+        secondPoint = (Button) findViewById(R.id.secondPoint);
+        result = (TextView) findViewById(R.id.result);
+        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+//	add in the location listener
+        addLocationListener();
+
+    }
+
+ //	private	method that	will add a location	listener to	the	location manager
     private void addLocationListener() {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -59,50 +64,34 @@ public class YardageFinder extends AppCompatActivity {
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 5, new LocationListener() {
             @Override
             public void onLocationChanged(final Location location) {
-//	the	location of	the	device has changed so update the textviews to reflect this
-
-//                Location loc1 = new Location("");
-//                loc1.setLatitude(lat1);
-//                loc1.setLongitude(long1);
-//
-//                Location loc2 = new Location("");
-//                loc2.setLatitude(lat2);
-//                loc2.setLongitude(long2);
-//
-//                final float distanceInMeters = loc1.distanceTo(loc2);
-
-
+// record location of first point
                 firstPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         tv_lat.setText("" + location.getLatitude());
                         tv_long.setText("" + location.getLongitude());
 
-                        String str = tv_lat.getText().toString();
-                        String str1 = tv_long.getText().toString();
-                        lat1 = Float.parseFloat(str);
-                        long1 = Float.parseFloat(str1);
+                        loc1.setLatitude(location.getLatitude());
+                        loc1.setLongitude(location.getLongitude());
 
                     }
                 });
-
+// record location of second point
                 secondPoint.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         tv_lat2.setText("" + location.getLatitude());
                         tv_long2.setText("" + location.getLongitude());
 
-                        String str2 = tv_lat.getText().toString();
-                        String str3 = tv_long.getText().toString();
-                        lat2 = Float.parseFloat(str2);
-                        long2 = Float.parseFloat(str3);
 
-                        finalLat = lat2-lat1;
-                        finalLong = long2 - long1;
+                        loc2.setLatitude(location.getLatitude());
+                        loc2.setLongitude(location.getLongitude());
 
-                        result.setText(""+ finalLat);
-                        result.setText(""+ finalLong);
+// subtract the two locations
+                        final float distanceInMeters = loc1.distanceTo(loc2);
+
+                        double distanceInYards = distanceInMeters * 1.09361;
+                        result.setText(Math.round(distanceInYards)+" Yards");
 
                     }
                 });
@@ -137,28 +126,6 @@ public class YardageFinder extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yardage_finder);
-
-        tv_lat = (TextView) findViewById(R.id.tv_lat);
-        tv_long = (TextView) findViewById(R.id.tv_long);
-        firstPoint = (Button) findViewById(R.id.firstPoint);
-        tv_lat2 = (TextView) findViewById(R.id.tv_lat2);
-        tv_long2 = (TextView) findViewById(R.id.tv_long2);
-        secondPoint = (Button) findViewById(R.id.secondPoint);
-        result = (TextView) findViewById(R.id.result);
-        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-//	add in the location listener
-        addLocationListener();
-
-    }
 }
 
 // https://stackoverflow.com/questions/22577075/calculating-the-distance-between-two-latitude-and-longitude-points-in-android
-
-
-
-
