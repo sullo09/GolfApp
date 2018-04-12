@@ -60,4 +60,11 @@
 
     <!-- playing round end -->
 
+    <!-- tips dialog box start -->
+    <string name="tipsTitle">Course Tips</string>
+    <string name="BackToScoreCard">Back To Score Card</string>
+
+    <!-- tips dialog box end -->
+
+
 </resources>

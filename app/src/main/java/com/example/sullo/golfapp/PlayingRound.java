@@ -1,7 +1,12 @@
 package com.example.sullo.golfapp;
 
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -19,6 +24,14 @@ public class PlayingRound extends AppCompatActivity {
     private TextView teeWhite;
     private TextView teeYellow;
     private TextView teeRed;
+    private Button green;
+    private Button tips;
+
+//pop up for tips
+    private AlertDialog.Builder dialogBuilderTips;
+    private AlertDialog dialogTips;
+    private TextView tipsHeading;
+    private Button backToCard;
 
 
     String par;
@@ -41,10 +54,29 @@ public class PlayingRound extends AppCompatActivity {
         teeWhite = (TextView) findViewById(R.id.teeWhite);
         teeYellow = (TextView) findViewById(R.id.teeYellow);
         teeRed = (TextView) findViewById(R.id.teeRed);
+        green = (Button) findViewById(R.id.green);
+        tips = (Button) findViewById(R.id.tips);
+
 
 // call json method
         get_json();
 
+// call the tips pop up
+        tips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createPopupDialogTips();
+            }
+        });
+
+// green view
+        green.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent playRound = new Intent(PlayingRound.this, MapsCourses.class);
+                startActivity(playRound);
+            }
+        });
 
     }
 // test json start
@@ -115,6 +147,17 @@ public class PlayingRound extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 //   test json end
+//start pop up for tips
+    private void createPopupDialogTips(){
+        dialogBuilderTips = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.pop_up_tips, null);
+
+        tipsHeading = (TextView) findViewById(R.id.tipsHeading);
+        backToCard = (Button) findViewById(R.id.backToCard);
+
+        dialogBuilderTips.setView(view);
+        dialogTips = dialogBuilderTips.create();
+        dialogTips.show();
+    }
 }
