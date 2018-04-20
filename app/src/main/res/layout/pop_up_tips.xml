@@ -29,6 +29,13 @@
                     android:text="@string/tipsTitle"
                     android:textColor="#353535"/>
 
+                <TextView
+                    android:id="@+id/actualTip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    />
+
                 <Button
                     android:id="@+id/backToCard"
                     android:layout_marginTop="5dp"

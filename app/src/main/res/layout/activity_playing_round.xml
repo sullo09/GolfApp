@@ -54,7 +54,7 @@
                     android:textSize="30sp" />
 
                 <ImageView
-                    android:id="@+id/NextHole"
+                    android:id="@+id/nextHole"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -380,7 +380,7 @@
     <!--putts end-->
     <!--image start-->
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/HoleImage"
         android:layout_width="301dp"
         android:layout_height="165dp"
         android:layout_marginBottom="8dp"
@@ -391,7 +391,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/place_holder" />
+        android:contentDescription="@string/image_playing_round"/>
+    <!--app:srcCompat="@drawable/place_holder"-->
     <!--image end-->
 
 
