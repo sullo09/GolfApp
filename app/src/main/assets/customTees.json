@@ -1,6 +1,6 @@
 [{"CourseID":"IR_OC_1","CourseName":"OldConna","CourseInformation":{
 	"hole1":{
-		"hole":"hole 1",
+		"hole1":"hole 1",
 		"par":"4",
 		"index":"6",
 		"tips":"bunker on right hand side",
@@ -13,7 +13,7 @@
 		"par":"3",
 		"index":"7",
 		"tips":"best place to miss is short",
-		"imageLocation":"place_holder",
+		"imageLocation":"",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":236,"Yellow":219,"red":163}
 	},
@@ -22,7 +22,7 @@
 		"par":"4",
 		"index":"13",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"place_holder",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":323,"Yellow":312,"red":249}
 	},

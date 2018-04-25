@@ -39,6 +39,8 @@ public class PlayingRound extends AppCompatActivity {
     private ImageView HoleImage;
     private ImageView nextHole;
     private ImageView previousHole;
+    private EditText HoleScore;
+    private EditText HolePutts;
 
 //pop up for tips
     private AlertDialog.Builder dialogBuilderTips;
@@ -52,16 +54,25 @@ public class PlayingRound extends AppCompatActivity {
     private Button noButton;
     private Button yesButton;
 
+    //variables to use details from json
     String par;
     String strokeIndex;
     String HolePicture;
     String whiteTees;
     String yellowTees;
     String redTees;
+    String ScoreTotal;
+    String GreenLocation;
 
-    //JSONArray CourseInfo = new JSONArray();
 
-    ArrayList<String> numberlist = new ArrayList<>();
+    int NumberOfHole = 1;
+
+    JSONArray CourseInfo = new JSONArray();
+
+    //Declare all posstions to start at 0;
+    //int[] scroesList = {1,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    int[] scroesList = new int[18];
+    int[] puttList = new int[18];
 
 
     @Override
@@ -79,9 +90,8 @@ public class PlayingRound extends AppCompatActivity {
         tips = (Button) findViewById(R.id.tips);
         nextHole = (ImageView) findViewById(R.id.nextHole);
         previousHole = (ImageView) findViewById(R.id.previousHole);
-
-
-
+        HoleScore = (EditText) findViewById(R.id.HoleScore);
+        HolePutts = (EditText) findViewById(R.id.HolePutts);
 
         //Resources resources = getResources();
         HoleImage = (ImageView) findViewById(R.id.HoleImage);
@@ -108,13 +118,13 @@ public class PlayingRound extends AppCompatActivity {
         nextHole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                moveToTheNextHole();
             }
         });
         previousHole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                backToPreviousHole();
             }
         });
 
@@ -141,53 +151,22 @@ public class PlayingRound extends AppCompatActivity {
 
             json = new String(buffer, "UTF-8");
             JSONArray jsonArray = new JSONArray(json);
-            JSONObject obj2;
-            JSONObject obj5;
+            JSONObject courseDetails;
 
-            for (int i = 0; i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length();i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
 
-
-                   // numberlist.add(obj.getString("number"));
                 // equals, should be sent into method and hole number
                 if (obj.getString("CourseID").equals("IR_OC_1")) {
-                    obj2 = obj.getJSONObject("CourseInformation");
+                    courseDetails = obj.getJSONObject("CourseInformation");
 
-                    //JSONArray CourseInfo = obj.getJSONArray("CourseInformation");
-                    // Converting JsonObject to JsonArray
-                    JSONArray CourseInfo = new JSONArray();
-                    Iterator x = obj2.keys();
+                    Iterator x = courseDetails.keys();
 
                     while(x.hasNext()){
                         String key = (String) x.next();
-                        CourseInfo.put(obj2.get(key));
+                        CourseInfo.put(courseDetails.get(key));
                     }
-
-                    SetScreen(1, CourseInfo);
-
-                    /*
-                    obj5 = obj2.getJSONObject("hole1");
-                    par = obj5.getString("par");
-                    HolePar.setText("Par " + par);
-
-                    strokeIndex = obj5.getString("index");
-                    HoleIndex.setText("Index " + strokeIndex);
-
-                    HolePicture = obj5.getString("imageLocation");
-                    HoleImage.setImageResource(getResources().getIdentifier(HolePicture,"drawable", this.getPackageName()));
-
-                    whiteTees = obj5.getJSONObject("tees").getString("white");
-                    teeWhite.setText(whiteTees + " yards");
-                    teeWhite.setBackgroundResource(R.color.WhiteYards);
-
-                    yellowTees = obj5.getJSONObject("tees").getString("Yellow");
-                    teeYellow.setText(yellowTees + " yards");
-                    teeYellow.setBackgroundResource(R.color.yellowYards);
-
-                    redTees = obj5.getJSONObject("tees").getString("red");
-                    teeRed.setText(redTees + " yards");
-                    teeRed.setBackgroundResource(R.color.redYards);
-                    */
+                    SetScreen();
                 }
             }
 
@@ -202,11 +181,11 @@ public class PlayingRound extends AppCompatActivity {
     }
 
 
-    public void SetScreen (int  HoleNum, JSONArray CourseInfo){
+    public void SetScreen (){
         try {
-            JSONObject HoleInfo = CourseInfo.getJSONObject(HoleNum - 1);
+            JSONObject HoleInfo = CourseInfo.getJSONObject(NumberOfHole - 1);
             getAllHoleInformation(HoleInfo);
-            HoleNumber.setText("Hole " + HoleNum);
+            HoleNumber.setText("HOLE " + NumberOfHole);
         }catch (JSONException e){
             e.printStackTrace();
         }
@@ -232,26 +211,46 @@ public class PlayingRound extends AppCompatActivity {
             teeRed.setText(redTees + " yards");
             teeRed.setBackgroundResource(R.color.redYards);
 
+            HoleScore.setText(Integer.toString(scroesList[NumberOfHole-1]));
+            HolePutts.setText(Integer.toString(puttList[NumberOfHole-1]));
+
             HolePicture = holeInfo.getString("imageLocation");
             HoleImage.setImageResource(getResources().getIdentifier(HolePicture, "drawable", this.getPackageName()));
 
-            /*
-            whiteTees = holeInfo.getJSONObject("tees").getString("white");
-            teeWhite.setText(whiteTees + " yards");
-            teeWhite.setBackgroundResource(R.color.WhiteYards);
 
-            yellowTees = holeInfo.getJSONObject("tees").getString("Yellow");
-            teeYellow.setText(yellowTees + " yards");
-            teeYellow.setBackgroundResource(R.color.yellowYards);
+//          GreenLocation = holeInfo.getString("");
+//          "location":{"Latitude":53.213233,"Longitude":-6.142819},
 
-            redTees = holeInfo.getJSONObject("tees").getString("red");
-            teeRed.setText(redTees + " yards");
-            teeRed.setBackgroundResource(R.color.redYards);
-            */
+
         }catch (JSONException e){
             e.printStackTrace();
         }
     }
+
+    //move to next hole on click
+    private void moveToTheNextHole(){
+        if(NumberOfHole < 18) {
+            SetScores();
+            NumberOfHole ++;
+            SetScreen();
+        }
+    }
+
+    //go back to previous hole
+    private void backToPreviousHole(){
+        if(NumberOfHole > 1) {
+            SetScores();
+            NumberOfHole --;
+            SetScreen();
+        }
+    }
+
+    private void SetScores(){
+        scroesList[NumberOfHole-1] = Integer.parseInt(HoleScore.getText().toString());
+        puttList[NumberOfHole-1] = Integer.parseInt(HolePutts.getText().toString());
+    }
+
+
 //   test json end
 //start pop up for tips
     private void createPopupDialogTips(){
