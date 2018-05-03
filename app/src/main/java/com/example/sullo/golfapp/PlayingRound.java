@@ -28,6 +28,7 @@ public class PlayingRound extends AppCompatActivity {
 
     private Context context;
 
+// id's from activity
     private TextView HoleNumber;
     private TextView HolePar;
     private TextView HoleIndex;
@@ -41,6 +42,8 @@ public class PlayingRound extends AppCompatActivity {
     private ImageView previousHole;
     private EditText HoleScore;
     private EditText HolePutts;
+    private TextView ScoreTotal;
+    private TextView PuttsTotal;
 
 //pop up for tips
     private AlertDialog.Builder dialogBuilderTips;
@@ -61,19 +64,19 @@ public class PlayingRound extends AppCompatActivity {
     String whiteTees;
     String yellowTees;
     String redTees;
-    String ScoreTotal;
+    String ScoreT;
     String GreenLocation;
-
 
     int NumberOfHole = 1;
 
     JSONArray CourseInfo = new JSONArray();
 
-    //Declare all posstions to start at 0;
-    //int[] scroesList = {1,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    // Declare all Postions to start at 0 so -1 to get actual hole;
+    // This needs to be set to the number of holes (18 is max and most common)
+    // This is not nessary but would make the app more memory efficient
     int[] scroesList = new int[18];
     int[] puttList = new int[18];
-
+    int[] testList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,8 @@ public class PlayingRound extends AppCompatActivity {
         previousHole = (ImageView) findViewById(R.id.previousHole);
         HoleScore = (EditText) findViewById(R.id.HoleScore);
         HolePutts = (EditText) findViewById(R.id.HolePutts);
+        ScoreTotal = (TextView) findViewById(R.id.ScoreTotal);
+        PuttsTotal = (TextView) findViewById(R.id.PuttsTotal);
 
         //Resources resources = getResources();
         HoleImage = (ImageView) findViewById(R.id.HoleImage);
@@ -129,14 +134,12 @@ public class PlayingRound extends AppCompatActivity {
         });
 
 // call the tips pop up
-//        tips.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                createPopupDialogTips();
-//            }
-//        });
-
-
+        tips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createPopupDialogTips();
+            }
+        });
 
     }
 // test json start
@@ -166,6 +169,7 @@ public class PlayingRound extends AppCompatActivity {
                         String key = (String) x.next();
                         CourseInfo.put(courseDetails.get(key));
                     }
+                    testList = new int[CourseInfo.length()];
                     SetScreen();
                 }
             }
@@ -180,25 +184,51 @@ public class PlayingRound extends AppCompatActivity {
         }
     }
 
-
+    //sets the screen to according hole
     public void SetScreen (){
         try {
             JSONObject HoleInfo = CourseInfo.getJSONObject(NumberOfHole - 1);
             getAllHoleInformation(HoleInfo);
             HoleNumber.setText("HOLE " + NumberOfHole);
+            //total score and putts calling method from hole
+            // ScoreTotal is id of score total xml (HoleScore id on single score)
+            //puttsTotal is id of putts total in xml (HolePutts id on single score)
+
+
+            int sumScore = 0;
+            int sumPutts = 0;
+
+            // CourseInfo is the number of holes
+            // This is set at the start when the json is parsed
+            // This can't be hard cored as some course have only 9 holes
+            for(int i=0; i < CourseInfo.length(); i++) {
+                sumScore += scroesList[i];
+                sumPutts += puttList[i];
+            }
+
+            ScoreTotal.setText("Total: " + Integer.toString(sumScore));
+            PuttsTotal.setText("Total: " + Integer.toString(sumPutts));
+
+
         }catch (JSONException e){
             e.printStackTrace();
         }
+
+
     }
 
+//returns all the hole information from json
     private void getAllHoleInformation(JSONObject holeInfo){
         try {
+//return par from json
             par = holeInfo.getString("par");
             HolePar.setText("Par " + par);
 
+//return index from json
             strokeIndex = holeInfo.getString("index");
             HoleIndex.setText("Index " + strokeIndex);
 
+//return the tes's color and yardage of the hole from the json (start)
             whiteTees = holeInfo.getJSONObject("tees").getString("white");
             teeWhite.setText(whiteTees + " yards");
             teeWhite.setBackgroundResource(R.color.WhiteYards);
@@ -210,24 +240,28 @@ public class PlayingRound extends AppCompatActivity {
             redTees = holeInfo.getJSONObject("tees").getString("red");
             teeRed.setText(redTees + " yards");
             teeRed.setBackgroundResource(R.color.redYards);
-
-            HoleScore.setText(Integer.toString(scroesList[NumberOfHole-1]));
-            HolePutts.setText(Integer.toString(puttList[NumberOfHole-1]));
-
-            HolePicture = holeInfo.getString("imageLocation");
-            HoleImage.setImageResource(getResources().getIdentifier(HolePicture, "drawable", this.getPackageName()));
+//return the tes's color and yardage of the hole from the json (end)
 
 
 //          GreenLocation = holeInfo.getString("");
 //          "location":{"Latitude":53.213233,"Longitude":-6.142819},
 
+//return tips of hole
+
+//set holeScore text to score in arrrayList and list wise with putts
+            HoleScore.setText(Integer.toString(scroesList[NumberOfHole-1]));
+            HolePutts.setText(Integer.toString(puttList[NumberOfHole-1]));
+
+//return the image of the hole from the json
+            HolePicture = holeInfo.getString("imageLocation");
+            HoleImage.setImageResource(getResources().getIdentifier(HolePicture, "drawable", this.getPackageName()));
 
         }catch (JSONException e){
             e.printStackTrace();
         }
     }
 
-    //move to next hole on click
+//move to next hole on click
     private void moveToTheNextHole(){
         if(NumberOfHole < 18) {
             SetScores();
@@ -236,7 +270,7 @@ public class PlayingRound extends AppCompatActivity {
         }
     }
 
-    //go back to previous hole
+//go back to previous hole
     private void backToPreviousHole(){
         if(NumberOfHole > 1) {
             SetScores();
@@ -270,7 +304,6 @@ public class PlayingRound extends AppCompatActivity {
                 dialogTips.dismiss();
             }
         });
-
     }
     private void createPopupDialogDelete(){
         View view = View.inflate(null, R.layout.pop_up_tips, null);
