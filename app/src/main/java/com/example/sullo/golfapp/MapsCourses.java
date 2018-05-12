@@ -1,5 +1,6 @@
 package com.example.sullo.golfapp;
 
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsCourses extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Location HoleLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,11 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+
+//    public MapsCourses(GoogleMap mMap) {
+//
+//    }
 
 
     /**
@@ -40,9 +47,13 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
-        LatLng FirstGreen = new LatLng(53.213233, -6.142819);
-        mMap.addMarker(new MarkerOptions().position(FirstGreen).title("Mount Wolseyey Golf Club")
+
+         LatLng secondGreen = new LatLng(53.213233, -6.142819);
+        // LatLng thirdGreen = new LatLng(53.213233, -6.142819);
+        // LatLng forthGreen = new LatLng(53.213233, -6.142819);
+
+        mMap.addMarker(new MarkerOptions().position(secondGreen).title("OldConna1")
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(FirstGreen, 19));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(secondGreen, 19));
     }
 }

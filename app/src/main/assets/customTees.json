@@ -4,7 +4,7 @@
 		"par":"4",
 		"index":"6",
 		"tips":"bunker on right hand side",
-		"imageLocation":"place_holder",
+		"imageLocation":"hole1",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":375,"Yellow":362,"red":352}
 	},
@@ -13,8 +13,8 @@
 		"par":"3",
 		"index":"7",
 		"tips":"best place to miss is short",
-		"imageLocation":"",
-		"location":{"Latitude":53.213233,"Longitude":-6.142819},
+		"imageLocation":"hole2",
+		"location":{"Latitude":53.211216,"Longitude":-6.142971},
 		"tees":{"white":236,"Yellow":219,"red":163}
 	},
 	"hole3":{
@@ -22,8 +22,8 @@
 		"par":"4",
 		"index":"13",
 		"tips":"second shot always plays longer",
-		"imageLocation":"place_holder",
-		"location":{"Latitude":53.213233,"Longitude":-6.142819},
+		"imageLocation":"hole3",
+		"location":{"Latitude":53.213039,"Longitude":-6.145115},
 		"tees":{"white":323,"Yellow":312,"red":249}
 	},
 	"hole4":{
@@ -31,8 +31,8 @@
 		"par":"5",
 		"index":"11",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
-		"location":{"Latitude":53.213233,"Longitude":-6.142819},
+		"imageLocation":"hole4",
+		"location":{"Latitude":53.216077,"Longitude":-6.138668},
 		"tees":{"white":539,"Yellow":528,"red":461}
 	},
 	"hole5":{
@@ -40,7 +40,7 @@
 		"par":"5",
 		"index":"2",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"hole5",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":583,"Yellow":564,"red":441}
 	},
@@ -49,7 +49,7 @@
 		"par":"4",
 		"index":"4",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"hole6",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":378,"Yellow":364,"red":316}
 	},
@@ -58,7 +58,7 @@
 		"par":"4",
 		"index":"8",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"hole7",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":381,"Yellow":365,"red":351}
 	},
@@ -67,7 +67,7 @@
 		"par":"3",
 		"index":"18",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"hole8",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":118,"Yellow":110,"red":98}
 	},
@@ -76,7 +76,7 @@
 		"par":"4",
 		"index":"15",
 		"tips":"second shot always plays longer",
-		"imageLocation":"qw/qwr/qwer",
+		"imageLocation":"hole9",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":329,"Yellow":316,"red":302}
 	},
