@@ -45,18 +45,13 @@ public class PlayingRound extends AppCompatActivity {
     private TextView ScoreTotal;
     private TextView PuttsTotal;
 
+    private Button showHoleTips;
 //pop up for tips
     private AlertDialog.Builder dialogBuilderTips;
     private AlertDialog dialogTips;
     private TextView tipsHeading;
     private Button backToCard;
     private TextView actualTip;
-
-    private android.app.AlertDialog.Builder dialogBuilder;
-    private android.app.AlertDialog dialog;
-    private LayoutInflater inflater;
-    private Button noButton;
-    private Button yesButton;
 
     //variables to use details from json
     String par;
@@ -92,13 +87,14 @@ public class PlayingRound extends AppCompatActivity {
         teeYellow = (TextView) findViewById(R.id.teeYellow);
         teeRed = (TextView) findViewById(R.id.teeRed);
         green = (Button) findViewById(R.id.green);
-        tips = (Button) findViewById(R.id.tips);
+        //tips = (Button) findViewById(R.id.tips);
         nextHole = (ImageView) findViewById(R.id.nextHole);
         previousHole = (ImageView) findViewById(R.id.previousHole);
         HoleScore = (EditText) findViewById(R.id.HoleScore);
         HolePutts = (EditText) findViewById(R.id.HolePutts);
         ScoreTotal = (TextView) findViewById(R.id.ScoreTotal);
         PuttsTotal = (TextView) findViewById(R.id.PuttsTotal);
+        showHoleTips = (Button) findViewById(R.id.showHoleTips);
 
         //Resources resources = getResources();
         HoleImage = (ImageView) findViewById(R.id.HoleImage);
@@ -109,11 +105,11 @@ public class PlayingRound extends AppCompatActivity {
         //backToCard = (Button) findViewById(R.id.backToCard);
 
 
+
         // call json method
         get_json();
 
-
-        // green view
+// green view on google maps
         green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,25 +117,25 @@ public class PlayingRound extends AppCompatActivity {
                 startActivity(showGreen);
             }
         });
-
+//pop up to show tips
+        showHoleTips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createPopupDialogTips();
+            }
+        });
+// arrow to move to next hole
         nextHole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moveToTheNextHole();
             }
         });
+// arrow to move to previous hole
         previousHole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backToPreviousHole();
-            }
-        });
-
-// call the tips pop up
-        tips.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createPopupDialogTips();
             }
         });
     }
@@ -214,8 +210,6 @@ public class PlayingRound extends AppCompatActivity {
         }catch (JSONException e){
             e.printStackTrace();
         }
-
-
     }
 
 //returns all the hole information from json
@@ -251,6 +245,7 @@ public class PlayingRound extends AppCompatActivity {
 
 //return tips of hole
             holeTip = holeInfo.getString("tips");
+
             Log.d("holeTip", String.valueOf(holeTip));
 
 //set holeScore text to score in arrrayList and list wise with putts
@@ -273,6 +268,9 @@ public class PlayingRound extends AppCompatActivity {
             NumberOfHole ++;
             SetScreen();
         }
+        else if (NumberOfHole == 17){
+
+        }
     }
 
 //go back to previous hole
@@ -294,21 +292,23 @@ public class PlayingRound extends AppCompatActivity {
 //start pop up for tips
     private void createPopupDialogTips(){
         dialogBuilderTips = new AlertDialog.Builder(this);
-
         View view = getLayoutInflater().inflate(R.layout.pop_up_tips, null);
 
-        actualTip = (TextView) findViewById(R.id.actualTip);
-        backToCard = (Button) findViewById(R.id.backToCard);
+        //String test = "testing";
+        //actualTip = (TextView) findViewById(R.id.actualTip);
+        //actualTip.setText(test);
+        //backToCard = (Button) findViewById(R.id.backToCard);
 
         dialogBuilderTips.setView(view);
         dialogTips = dialogBuilderTips.create();
         dialogTips.show();
 
-        backToCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogTips.dismiss();
-            }
-        });
+//        backToCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                dialogTips.dismiss();
+//                  //finish();
+//            }
+//        });
     }
 }

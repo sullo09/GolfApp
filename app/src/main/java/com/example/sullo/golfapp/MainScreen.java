@@ -25,7 +25,7 @@ public class MainScreen extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adaptor;
-//  private List<ListItems> listItems;
+//  private List<ListItem> listItems;
 
     CardView newRoundCard, coursesCard, roundsCard, groupsCard, myProfileCard, distanceMeasureCard;
 

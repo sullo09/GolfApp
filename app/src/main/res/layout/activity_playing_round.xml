@@ -254,7 +254,7 @@
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/tips"
+            android:id="@+id/showHoleTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
