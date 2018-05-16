@@ -64,7 +64,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             courseName = (TextView) itemView.findViewById(R.id.courseName);
             description = (TextView) itemView.findViewById(R.id.description);
-
         }
 
         @Override

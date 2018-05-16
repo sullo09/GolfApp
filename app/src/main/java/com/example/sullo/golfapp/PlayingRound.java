@@ -3,6 +3,7 @@ package com.example.sullo.golfapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.inputmethodservice.Keyboard;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class PlayingRound extends AppCompatActivity {
     private EditText HolePutts;
     private TextView ScoreTotal;
     private TextView PuttsTotal;
+    private Button finishRound;
 
     private Button showHoleTips;
 //pop up for tips
@@ -95,6 +97,7 @@ public class PlayingRound extends AppCompatActivity {
         ScoreTotal = (TextView) findViewById(R.id.ScoreTotal);
         PuttsTotal = (TextView) findViewById(R.id.PuttsTotal);
         showHoleTips = (Button) findViewById(R.id.showHoleTips);
+        finishRound = (Button) findViewById(R.id.finishRound);
 
         //Resources resources = getResources();
         HoleImage = (ImageView) findViewById(R.id.HoleImage);
@@ -103,7 +106,6 @@ public class PlayingRound extends AppCompatActivity {
 
         tipsHeading = (TextView) findViewById(R.id.tipsHeading);
         //backToCard = (Button) findViewById(R.id.backToCard);
-
 
 
         // call json method
@@ -122,6 +124,14 @@ public class PlayingRound extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createPopupDialogTips();
+            }
+        });
+ //finish round button
+        finishRound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent showResults = new Intent(PlayingRound.this, RoundResults.class);
+                startActivity(showResults);
             }
         });
 // arrow to move to next hole
@@ -191,7 +201,6 @@ public class PlayingRound extends AppCompatActivity {
             // ScoreTotal is id of score total xml (HoleScore id on single score)
             //puttsTotal is id of putts total in xml (HolePutts id on single score)
 
-
             int sumScore = 0;
             int sumPutts = 0;
 
@@ -203,9 +212,8 @@ public class PlayingRound extends AppCompatActivity {
                 sumPutts += puttList[i];
             }
 
-            ScoreTotal.setText("Total: " + Integer.toString(sumScore));
-            PuttsTotal.setText("Total: " + Integer.toString(sumPutts));
-
+            ScoreTotal.setText("Total: " + Integer.toString(sumScore)+"/");
+            PuttsTotal.setText("Total: " + Integer.toString(sumPutts)+"/");
 
         }catch (JSONException e){
             e.printStackTrace();
@@ -249,6 +257,7 @@ public class PlayingRound extends AppCompatActivity {
             Log.d("holeTip", String.valueOf(holeTip));
 
 //set holeScore text to score in arrrayList and list wise with putts
+//            HoleScore.setImeActionLabel("Custom text", Keyboard.KEYCODE_DONE);
             HoleScore.setText(Integer.toString(scroesList[NumberOfHole-1]));
             HolePutts.setText(Integer.toString(puttList[NumberOfHole-1]));
 
@@ -283,6 +292,7 @@ public class PlayingRound extends AppCompatActivity {
     }
 
     private void SetScores(){
+
         scroesList[NumberOfHole-1] = Integer.parseInt(HoleScore.getText().toString());
         puttList[NumberOfHole-1] = Integer.parseInt(HolePutts.getText().toString());
     }

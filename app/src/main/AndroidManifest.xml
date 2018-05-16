@@ -61,6 +61,8 @@
         <activity
             android:name=".PlayingRound"
             android:label=" " />
+        <activity android:name=".RoundResults"
+            android:label="Round Review" />
 
     </application>
 

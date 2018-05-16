@@ -1,21 +1,34 @@
 package com.example.sullo.golfapp;
 
-import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsCourses extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private Location HoleLocation;
+    private static final LatLng OldConnaGC = new LatLng(53.215558,-6.1402148);
+    private static final LatLng BrayGC = new LatLng(53.182101,-6.091881);
+    private static final LatLng DunLaoghaireGC = new LatLng(53.211174,-6.1630377);
+    private static final LatLng WoodbrookGC  = new LatLng(53.216807,-6.1140187);
+
+
+    private Marker oldConnaGC;
+    private Marker brayGC;
+    private Marker dunLaoghaireGC;
+    private Marker woodbrookGC;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +39,6 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
-
-//    public MapsCourses(GoogleMap mMap) {
-//
-//    }
-
 
     /**
      * Manipulates the map once available.
@@ -45,15 +52,47 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
+        List<Marker> markerList = new ArrayList<>();
 
-         LatLng secondGreen = new LatLng(53.213233, -6.142819);
-        // LatLng thirdGreen = new LatLng(53.213233, -6.142819);
-        // LatLng forthGreen = new LatLng(53.213233, -6.142819);
+//        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+//        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        mMap.addMarker(new MarkerOptions().position(secondGreen).title("OldConna1")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(secondGreen, 19));
+        oldConnaGC = mMap.addMarker(new MarkerOptions()
+        .position(OldConnaGC).title("Old Conna Golf Club"));
+        oldConnaGC.setTag(0);
+        markerList.add(oldConnaGC);
+
+        brayGC = mMap.addMarker(new MarkerOptions()
+        .position(BrayGC).title("Bray Golf Club"));
+        brayGC.setTag(0);
+        markerList.add(brayGC);
+
+        dunLaoghaireGC = mMap.addMarker(new MarkerOptions()
+                .position(DunLaoghaireGC).title("Dun Laoghaire Golf Club"));
+        dunLaoghaireGC.setTag(0);
+        markerList.add(dunLaoghaireGC);
+
+        woodbrookGC = mMap.addMarker(new MarkerOptions()
+                .position(WoodbrookGC).title("Woodbrook Golf Club"));
+        woodbrookGC.setTag(0);
+        markerList.add(woodbrookGC);
+
+        for (Marker marker : markerList){
+            Log.d("Marker", marker.getTitle());
+
+            LatLng latLng = new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
+            mMap.addMarker(new MarkerOptions().position(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+        }
+
+//         LatLng secondGreen = new LatLng(53.213233, -6.142819);
+//        // LatLng thirdGreen = new LatLng(53.213233, -6.142819);
+//        // LatLng forthGreen = new LatLng(53.213233, -6.142819);
+//
+//        mMap.addMarker(new MarkerOptions().position(secondGreen).title("OldConna1")
+//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(secondGreen, 13));
     }
 }

@@ -30,9 +30,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //firebase authorization object
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    //firebase authorization object
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mUser;

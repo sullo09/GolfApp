@@ -257,13 +257,23 @@
             android:id="@+id/showHoleTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@android:color/white"
+            android:text="Tips"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/finishRound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:backgroundTint="@android:color/white"
-            android:text="Tips"
+            android:text="Finish Round"
             android:textSize="10sp" />
 
     </RelativeLayout>
@@ -318,7 +328,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
-            android:text="Total"
+            android:text="Total "
             android:textColor="#ffffff"
             android:textSize="18sp" />
 

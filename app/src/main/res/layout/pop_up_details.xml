@@ -65,7 +65,7 @@
                     android:id="@+id/saveButton"
                     android:layout_marginTop="5dp"
                     android:layout_below="@id/handicap"
-                    android:text="@string/save_title"
+                    android:text="Play"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
                     android:background="#353535"
