@@ -61,9 +61,10 @@
         <activity
             android:name=".PlayingRound"
             android:label=" " />
-        <activity android:name=".RoundResults"
+        <activity
+            android:name=".RoundResults"
             android:label="Round Review" />
-
+        <activity android:name=".RecordedYardages"></activity>
     </application>
 
 </manifest>

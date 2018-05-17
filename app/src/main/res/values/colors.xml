@@ -6,4 +6,6 @@
     <color name="WhiteYards">#ffffff</color>
     <color name="yellowYards">#b1ae04</color>
     <color name="redYards">#ff0004</color>
+    <color name="clubPickedOn">#01ff09</color>
+    <color name="clubPickedOff">#ffffff</color>
 </resources>

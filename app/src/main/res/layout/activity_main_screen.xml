@@ -183,6 +183,51 @@
             android:background="#a0a0a0" />
 <!--GROUPS END-->
 
+        <!--DISTANCE MEASURE START-->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp"
+            app:cardBackgroundColor="#353535"
+            android:id="@+id/distanceMeasureCard">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="84dp">
+
+                <ImageView
+                    android:id="@+id/mainScreenImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginStart="33dp"
+                    app:srcCompat="@mipmap/ic_launcher_round" />
+
+                <TextView
+                    android:id="@+id/DistanceMeasureText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/mainScreenImage"
+                    android:layout_toRightOf="@+id/mainScreenImage"
+                    android:text="Distance Measure"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#a0a0a0" />
+        <!--DISTANCE MEASURE END-->
+
 <!--MY PROFILE START-->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -224,47 +269,6 @@
             android:layout_height="2dp"
             android:background="#a0a0a0" />
 <!--MY PROFILE END-->
-
-<!--DISTANCE MEASURE START-->
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp"
-            app:cardBackgroundColor="#353535"
-            android:id="@+id/distanceMeasureCard">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="84dp">
-
-                <ImageView
-                    android:id="@+id/mainScreenImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="33dp"
-                    android:layout_marginStart="33dp"
-                    app:srcCompat="@mipmap/ic_launcher_round" />
-
-                <TextView
-                    android:id="@+id/DistanceMeasureText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_toEndOf="@+id/mainScreenImage"
-                    android:layout_toRightOf="@+id/mainScreenImage"
-                    android:text="Distance Measure"
-                    android:textColor="#ffffff"
-                    android:textSize="30sp" />
-
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-<!--DISTANCE MEASURE END-->
 
     </LinearLayout>
 </ScrollView>
