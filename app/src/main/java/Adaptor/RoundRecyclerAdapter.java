@@ -22,14 +22,12 @@ import Model.CompletedRound;
 public class RoundRecyclerAdapter extends RecyclerView.Adapter<RoundRecyclerAdapter.ViewHolder>{
 
     private Context context;
+    private List<CompletedRound> roundsList;
 
     public RoundRecyclerAdapter(Context context, List<CompletedRound> roundsList) {
         this.context = context;
         this.roundsList = roundsList;
     }
-
-    private List<CompletedRound> roundsList;
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

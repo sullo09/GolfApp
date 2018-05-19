@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import Adaptor.ShotAdapter;
+
 public class YardageFinder extends AppCompatActivity{
 
 //	private	fields	of	the	class
@@ -46,6 +48,8 @@ public class YardageFinder extends AppCompatActivity{
         imageStart = (ImageView) findViewById(R.id.imageStart);
         result = (TextView) findViewById(R.id.result);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        String club;
+
 
 //  club buttons
         button4iron = (Button) findViewById(R.id.button4iron);
@@ -62,18 +66,11 @@ public class YardageFinder extends AppCompatActivity{
         buttonDriver = (Button) findViewById(R.id.buttonDriver);
 
 
-        recordShot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myProfile = new Intent(YardageFinder.this, RecordedYardages.class);
-                startActivity(myProfile);
-            }
-        });
         button4iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button4iron.setBackgroundResource(R.color.clubPickedOff);
-                button4iron.getText();
+                result.setText("Club: 4 Iron");
                 Log.d("button4iron", "4 iron picked");
             }
         });
@@ -81,69 +78,90 @@ public class YardageFinder extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 button5iron.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 5 Iron");
             }
         });
         button6iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button6iron.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 6 Iron");
             }
         });
         button7iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button7iron.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 7 Iron");
             }
         });
         button8iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button8iron.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 8 Iron");
             }
         });
         button9iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button9iron.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 9 Iron");
             }
         });
         buttonPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonPW.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: PW");
             }
         });
         buttonSW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonSW.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: SW");
             }
         });
         buttonLW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonLW.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: LW");
             }
         });
         button3R.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button3R.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 3 Rescue");
             }
         });
         button3W.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button3W.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: 3 Wood");
             }
         });
         buttonDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonDriver.setBackgroundResource(R.color.clubPickedOff);
+                result.setText("Club: Driver");
             }
         });
+        recordShot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(YardageFinder.this, RecordedYardages.class);
+                String record = String.valueOf(result);
+                intent.putExtra("record", String.valueOf(record));
+                startActivity(intent);
+                Log.d("record", String.valueOf(record));
 
+            }
+        });
 
 //	add in the location listener
         addLocationListener();
@@ -189,7 +207,9 @@ public class YardageFinder extends AppCompatActivity{
 
                             double distanceInYards = distanceInMeters * 1.09361;
                             Log.d(String.valueOf(distanceInYards), "Point final");
-                            result.setText("Distance: " + Math.round(distanceInYards) + " Yards");
+
+                            result.setText(result.getText()+ "  Distance: " + Math.round(distanceInYards) + " Yards");
+
                         }
                     });
             }
@@ -213,51 +233,5 @@ public class YardageFinder extends AppCompatActivity{
 
     }
 }
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.button4iron:
-//                button4iron.setBackgroundResource(R.color.clubPicked);
-//                Intent CancelReturnToMain = new Intent(YardageFinder.this, MainActivity.class);
-//                startActivity(CancelReturnToMain);
-//                break;
-//            case R.id.button5iron:
-//                button5iron.setBackgroundResource(R.color.clubPicked);
-//                break;
-//            case R.id.button6iron:
-//
-//                break;
-//            case R.id.button7iron:
-//
-//                break;
-//            case R.id.button8iron:
-//
-//                break;
-//            case R.id.button9iron:
-//
-//                break;
-//            case R.id.buttonPW:
-//
-//                break;
-//            case R.id.buttonSW:
-//
-//                break;
-//            case R.id.buttonLW:
-//
-//                break;
-//            case R.id.button3R:
-//
-//                break;
-//            case R.id.button3W:
-//
-//                break;
-//            case R.id.buttonDriver:
-//
-//                break;
-//
-//
-//        }
-//
-//    }
 
 // https://stackoverflow.com/questions/22577075/calculating-the-distance-between-two-latitude-and-longitude-points-in-android
