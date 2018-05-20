@@ -7,14 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.sullo.golfapp.PlayRound;
+import com.example.sullo.golfapp.RoundType;
 import com.example.sullo.golfapp.R;
 
 import java.util.List;
 
-import Model.ListItem;
+import Model.CourseItem;
 
 /**
  * Created by sullo on 14/05/2018.
@@ -24,7 +23,7 @@ import Model.ListItem;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private Context context;
-    private List<ListItem> listItems;
+    private List<CourseItem> listItems;
 
     public MyAdapter(Context context, List listitem){
         this.context = context;
@@ -41,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
 
-        ListItem item = listItems.get(position);
+        CourseItem item = listItems.get(position);
 
         holder.courseName.setText(item.getCourseName());
         holder.description.setText(item.getDescription());
@@ -71,10 +70,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             // position of cardview
             int position = getAdapterPosition();
 
-            ListItem item = listItems.get(position);
+            CourseItem item = listItems.get(position);
             //Toast.makeText(context, item.getCourseName(),Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(context, PlayRound.class);
+            Intent intent = new Intent(context, RoundType.class);
             intent.putExtra("courseName", item.getCourseName());
+            intent.putExtra("courseDescription", item.getDescription());
+            intent.putExtra("CourseID", item.getID());
+
 
             context.startActivity(intent);
         }

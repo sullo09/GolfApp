@@ -52,14 +52,14 @@
         <activity android:name=".DistanceMeasured" />
         <activity android:name=".YardageFinder" />
         <activity
-            android:name=".Courses"
+            android:name=".RoundCourses"
             android:label="Courses" />
         <activity
-            android:name=".PlayRound"
+            android:name=".RoundType"
             android:label="Course Name Here" />
         <activity android:name=".PlayRoundDetails" />
         <activity
-            android:name=".PlayingRound"
+            android:name=".PlayingRoundCard"
             android:label=" " />
         <activity
             android:name=".RoundResults"

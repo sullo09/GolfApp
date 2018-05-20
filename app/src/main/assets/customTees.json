@@ -1,4 +1,5 @@
-[{"CourseID":"IR_OC_1","CourseName":"OldConna","CourseInformation":{
+[{"CourseID":"IR_OC_1","CourseName":"OldConna","CourseDescription":"Ferndale Road, Oldconnaught, Bray, Co. Wicklow",
+	"CourseInformation":{
 	"hole1":{
 		"hole1":"hole 1",
 		"par":"4",
@@ -161,5 +162,10 @@
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":510,"Yellow":484,"red":470}
 	}
-}
-}]
+}},
+	{"CourseID":"IR_BRAY_1","CourseName":"Bray","CourseDescription":"Greystones Road, Bray, Co. Wicklow",
+		"CourseInformation":{}},
+	{"CourseID":"IR_DUNL_1","CourseName":"DunLaoighaire","CourseDescription":"Ballyman Rd, Enniskerry, Co. Wicklow",
+		"CourseInformation":{}}
+
+]

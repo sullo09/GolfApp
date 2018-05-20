@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PlayRound extends AppCompatActivity {
+public class RoundType extends AppCompatActivity {
 
     Button singles, foursomes, group;
     Button play;
@@ -19,7 +19,7 @@ public class PlayRound extends AppCompatActivity {
     //  pop up singles
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private EditText name;
+    private EditText playerName;
     private TextView courseNamePopUp;
     private EditText handicap;
     private Button saveButton;
@@ -53,7 +53,7 @@ public class PlayRound extends AppCompatActivity {
 //        play.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent playRound = new Intent(PlayRound.this, PlayingRound.class);
+//                Intent playRound = new Intent(RoundType.this, PlayingRoundCard.class);
 //                startActivity(playRound);
 //            }
 //        });
@@ -63,15 +63,19 @@ public class PlayRound extends AppCompatActivity {
     private void createPopupDialogSingles() {
         dialogBuilder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.pop_up_details, null);
+
+        //extras
+        //courseName | courseDescription
         extras = getIntent().getExtras();
 
         courseNamePopUp = (TextView) view.findViewById(R.id.courseNamePopUp);
-        name = (EditText) view.findViewById(R.id.name);
+        playerName = (EditText) view.findViewById(R.id.name);
         handicap = (EditText) view.findViewById(R.id.handicap);
         saveButton = (Button) view.findViewById(R.id.saveButton);
 
         if (extras != null) {
             courseNamePopUp.setText(extras.getString("courseName"));
+
         }
 
         dialogBuilder.setView(view);
@@ -81,8 +85,12 @@ public class PlayRound extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playRoundd = new Intent(getBaseContext(), PlayingRound.class);
-                startActivity(playRoundd);
+                Intent startRound = new Intent(getBaseContext(), PlayingRoundCard.class);
+                startRound.putExtra("CourseIDExtra", extras.getString("CourseID"));
+                startRound.putExtra("handicap", handicap.getText().toString());
+                startRound.putExtra("playerName", playerName.getText().toString());
+
+                startActivity(startRound);
             }
         });
     }

@@ -14,8 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.json.JSONArray;
-
 public class MainScreen extends AppCompatActivity {
 
     private DatabaseReference mDatabaseReference;
@@ -25,7 +23,7 @@ public class MainScreen extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adaptor;
-//  private List<ListItem> listItems;
+//  private List<CourseItem> listItems;
 
     CardView newRoundCard, coursesCard, roundsCard, groupsCard, myProfileCard, distanceMeasureCard;
 
@@ -49,14 +47,14 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked New Round", Toast.LENGTH_LONG).show();
-                Intent startNewRound = new Intent(MainScreen.this, Courses.class);
+                Intent startNewRound = new Intent(MainScreen.this, RoundCourses.class);
                 startActivity(startNewRound);
             }
         });
         coursesCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainScreen.this, "Clicked Courses", Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainScreen.this, "Clicked RoundCourses", Toast.LENGTH_LONG).show();
                 Intent courses = new Intent(MainScreen.this, MapsCourses.class);
                 startActivity(courses);
             }

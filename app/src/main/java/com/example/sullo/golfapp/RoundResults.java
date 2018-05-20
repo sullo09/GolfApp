@@ -39,12 +39,14 @@ public class RoundResults extends AppCompatActivity {
     private EditText finalScoreName;
     private TextView finalScoreDateAdded;
     private Button saveRound;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_results);
 
+        //courseName | courseDescription
 
         mAuth = FirebaseAuth.getInstance().getInstance();
         mUser = mAuth.getCurrentUser();
@@ -62,9 +64,17 @@ public class RoundResults extends AppCompatActivity {
         finalScoreDateAdded = (TextView) findViewById(R.id.finalScoreDateAdded);
         saveRound = (Button) findViewById(R.id.saveRound);
 
-        finalScoreCourse.setText("Courses: ");
+        finalScoreCourse.setText("RoundCourses: ");
         finalScoreName.setText("Name: ");
         finalScore.setText("Score: ");
+
+        extras = getIntent().getExtras();
+
+        if (extras != null) {
+            finalScoreCourse.setText("Course: " + extras.getString( "courseName"));
+            finalScoreName.setText("Name: " + extras.getString("playerName"));
+            finalScore.setText("Course: " + extras.getString("score"));
+        }
 
         saveRound.setOnClickListener(new View.OnClickListener() {
             @Override

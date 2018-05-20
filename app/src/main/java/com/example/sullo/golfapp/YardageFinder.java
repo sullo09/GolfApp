@@ -23,6 +23,7 @@ public class YardageFinder extends AppCompatActivity{
 
 //	private	fields	of	the	class
     private TextView result;
+    private String clubPicked;
     private LocationManager lm;
     private ImageView imageStart;
     private Button buttonStart;
@@ -70,7 +71,7 @@ public class YardageFinder extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 button4iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 4 Iron");
+                clubPicked = "Club: 4 Iron";
                 Log.d("button4iron", "4 iron picked");
             }
         });
@@ -78,84 +79,84 @@ public class YardageFinder extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 button5iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 5 Iron");
+                clubPicked = "Club: 5 Iron";
             }
         });
         button6iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button6iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 6 Iron");
+                clubPicked = "Club: 6 Iron";
             }
         });
         button7iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button7iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 7 Iron");
+                clubPicked = "Club: 7 Iron";
             }
         });
         button8iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button8iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 8 Iron");
+                clubPicked = "Club: 8 Iron";
             }
         });
         button9iron.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button9iron.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 9 Iron");
+                clubPicked = "Club: 9 Iron";
             }
         });
         buttonPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonPW.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: PW");
+                clubPicked = "Club: PW";
             }
         });
         buttonSW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonSW.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: SW");
+                clubPicked = "Club: SW";
             }
         });
         buttonLW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonLW.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: LW");
+                clubPicked = "Club: LW";
             }
         });
         button3R.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button3R.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 3 Rescue");
+                clubPicked = "Club: 3 Rescue";
             }
         });
         button3W.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 button3W.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: 3 Wood");
+                clubPicked = "Club: 3 Wood";
             }
         });
         buttonDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonDriver.setBackgroundResource(R.color.clubPickedOff);
-                result.setText("Club: Driver");
+                clubPicked = "Club: Driver";
             }
         });
         recordShot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(YardageFinder.this, RecordedYardages.class);
-                String record = String.valueOf(result);
+                String record = result.getText().toString();
                 intent.putExtra("record", String.valueOf(record));
                 startActivity(intent);
                 Log.d("record", String.valueOf(record));
@@ -208,7 +209,7 @@ public class YardageFinder extends AppCompatActivity{
                             double distanceInYards = distanceInMeters * 1.09361;
                             Log.d(String.valueOf(distanceInYards), "Point final");
 
-                            result.setText(result.getText()+ "  Distance: " + Math.round(distanceInYards) + " Yards");
+                            result.setText(clubPicked + "  Distance: " + Math.round(distanceInYards) + " Yards");
 
                         }
                     });

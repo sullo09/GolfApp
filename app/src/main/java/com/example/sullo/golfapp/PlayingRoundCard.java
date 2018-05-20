@@ -2,19 +2,15 @@ package com.example.sullo.golfapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.inputmethodservice.Keyboard;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,10 +18,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PlayingRound extends AppCompatActivity {
+public class PlayingRoundCard extends AppCompatActivity {
 
     private Context context;
 
@@ -55,6 +50,8 @@ public class PlayingRound extends AppCompatActivity {
     private Button backToCard;
     private TextView actualTip;
 
+    private Bundle extras;
+
     //variables to use details from json
     String par;
     String strokeIndex;
@@ -62,11 +59,20 @@ public class PlayingRound extends AppCompatActivity {
     String whiteTees;
     String yellowTees;
     String redTees;
-    String ScoreT;
     String holeTip;
+    String courseName;
+    String handicap = "0";
+    String playerName = "";
+
     JSONObject GreenLocation;
 
+
+
     int NumberOfHole = 1;
+
+    int sumStableford = 0;
+    int sumScore = 0;
+    int sumPutts = 0;
 
     JSONArray CourseInfo = new JSONArray();
 
@@ -81,6 +87,15 @@ public class PlayingRound extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing_round);
+
+/** extras from RoundType **/
+/** courseDescription |handicap | playerName **/
+        extras = getIntent().getExtras();
+        String CourseIDExtra = extras.getString("CourseIDExtra");
+        handicap = extras.getString("handicap");
+        playerName = extras.getString("playerName");
+
+
 
         HoleNumber = (TextView) findViewById(R.id.HoleNumber);
         HolePar = (TextView) findViewById(R.id.HolePar);
@@ -109,13 +124,13 @@ public class PlayingRound extends AppCompatActivity {
 
 
         // call json method
-        get_json();
+        get_json(CourseIDExtra);
 
 // green view on google maps
         green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent showGreen = new Intent(PlayingRound.this, MapsCourses.class);
+                Intent showGreen = new Intent(PlayingRoundCard.this, MapsCourses.class);
                 startActivity(showGreen);
             }
         });
@@ -130,7 +145,11 @@ public class PlayingRound extends AppCompatActivity {
         finishRound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent showResults = new Intent(PlayingRound.this, RoundResults.class);
+                SetScores();
+                Intent showResults = new Intent(PlayingRoundCard.this, RoundResults.class);
+                showResults.putExtra("courseName", courseName);
+                showResults.putExtra("playerName", playerName);
+                showResults.putExtra("score", Integer.toString(sumScore));
                 startActivity(showResults);
             }
         });
@@ -149,8 +168,9 @@ public class PlayingRound extends AppCompatActivity {
             }
         });
     }
-// test json start
-    public void get_json(){
+
+// json start. take in extra from RoundType (CourseID)
+    public void get_json(String CourseIDExtra){
         String json;
         try{
             InputStream is = getAssets().open("customTees.json");
@@ -166,8 +186,10 @@ public class PlayingRound extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length();i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
 
-                // equals, should be sent into method and hole number
-                if (obj.getString("CourseID").equals("IR_OC_1")) {
+/* when other golf courses available do this */
+                if (obj.getString("CourseID").equals(CourseIDExtra)) {
+                    courseName = obj.getString("CourseName");
+
                     courseDetails = obj.getJSONObject("CourseInformation");
 
                     Iterator x = courseDetails.keys();
@@ -201,19 +223,7 @@ public class PlayingRound extends AppCompatActivity {
             // ScoreTotal is id of score total xml (HoleScore id on single score)
             //puttsTotal is id of putts total in xml (HolePutts id on single score)
 
-            int sumScore = 0;
-            int sumPutts = 0;
 
-            // CourseInfo is the number of holes
-            // This is set at the start when the json is parsed
-            // This can't be hard cored as some course have only 9 holes
-            for(int i=0; i < CourseInfo.length(); i++) {
-                sumScore += scroesList[i];
-                sumPutts += puttList[i];
-            }
-
-            ScoreTotal.setText("Total: " + Integer.toString(sumScore)+"/");
-            PuttsTotal.setText("Total: " + Integer.toString(sumPutts)+"/");
 
         }catch (JSONException e){
             e.printStackTrace();
@@ -272,29 +282,67 @@ public class PlayingRound extends AppCompatActivity {
 
 //move to next hole on click
     private void moveToTheNextHole(){
+        SetScores();
         if(NumberOfHole < 18) {
-            SetScores();
             NumberOfHole ++;
-            SetScreen();
         }
-        else if (NumberOfHole == 17){
-
+        else{
+            NumberOfHole = 1;
         }
+        SetScreen();
     }
 
 //go back to previous hole
     private void backToPreviousHole(){
+        SetScores();
         if(NumberOfHole > 1) {
-            SetScores();
             NumberOfHole --;
-            SetScreen();
         }
+        else{
+            NumberOfHole = 18;
+        }
+        SetScreen();
     }
 
     private void SetScores(){
-
         scroesList[NumberOfHole-1] = Integer.parseInt(HoleScore.getText().toString());
         puttList[NumberOfHole-1] = Integer.parseInt(HolePutts.getText().toString());
+
+        // CourseInfo is the number of holes
+        // This is set at the start when the json is parsed
+        // This can't be hard cored as some course have only 9 holes
+        sumStableford = 0;
+        sumScore = 0;
+        sumPutts = 0;
+        int tempScore;
+        for(int i = 0; i < CourseInfo.length(); i++) {
+            if(scroesList[i] != 0) {
+                tempScore = 0;
+                try {
+                    if (scroesList[i] <= Integer.parseInt(CourseInfo.getJSONObject(i).getString("par"))+3) {
+                         tempScore = (Integer.parseInt(CourseInfo.getJSONObject(i).getString("par")) + 2)- scroesList[i];
+                    }
+                    if ((Integer.parseInt(handicap) >=
+                            Integer.parseInt(CourseInfo.getJSONObject(i).getString("index"))+18)
+                            && tempScore >= -1) {
+                        tempScore += 2;
+                    } else if ((Integer.parseInt(handicap) >=
+                            Integer.parseInt(CourseInfo.getJSONObject(i).getString("index")))
+                            && tempScore >= 0) {
+                        tempScore += 1;
+                    }
+                    if (tempScore >= 0) {
+                        sumStableford += tempScore;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            sumScore += scroesList[i];
+            sumPutts += puttList[i];
+        }
+        ScoreTotal.setText("Total: " + Integer.toString(sumScore)+" / " + sumStableford);
+        PuttsTotal.setText("Total: " + Integer.toString(sumPutts));
     }
 
 
@@ -305,8 +353,12 @@ public class PlayingRound extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.pop_up_tips, null);
 
         //String test = "testing";
-        //actualTip = (TextView) findViewById(R.id.actualTip);
-        //actualTip.setText(test);
+        actualTip = (TextView) view.findViewById(R.id.actualTip);
+        try {
+            actualTip.setText(CourseInfo.getJSONObject(NumberOfHole -1).getString("tips"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         //backToCard = (Button) findViewById(R.id.backToCard);
 
         dialogBuilderTips.setView(view);
