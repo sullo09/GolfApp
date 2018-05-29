@@ -38,6 +38,8 @@ public class RoundResults extends AppCompatActivity {
     private EditText finalScoreCourse;
     private EditText finalScoreName;
     private TextView finalScoreDateAdded;
+    private TextView finalScoreSford;
+    private TextView finalScorePutts;
     private Button saveRound;
     private Bundle extras;
 
@@ -58,6 +60,8 @@ public class RoundResults extends AppCompatActivity {
 //progress wheel
         submitProgress = new ProgressDialog(this);
 
+        finalScoreSford = (EditText) findViewById(R.id.finalScoreSford);
+        finalScorePutts = (EditText) findViewById(R.id.finalScorePutts);
         finalScore = (EditText) findViewById(R.id.finalScore);
         finalScoreCourse = (EditText) findViewById(R.id.finalScoreCourse);
         finalScoreName = (EditText) findViewById(R.id.finalScoreName);
@@ -66,14 +70,19 @@ public class RoundResults extends AppCompatActivity {
 
         finalScoreCourse.setText("RoundCourses: ");
         finalScoreName.setText("Name: ");
-        finalScore.setText("Score: ");
+        finalScore.setText("Strokes Score: ");
+        finalScoreSford.setText("Stableford Score: ");
+        finalScorePutts.setText("Total Putts: ");
 
         extras = getIntent().getExtras();
 
         if (extras != null) {
             finalScoreCourse.setText("Course: " + extras.getString( "courseName"));
             finalScoreName.setText("Name: " + extras.getString("playerName"));
-            finalScore.setText("Course: " + extras.getString("score"));
+            finalScore.setText("Score: " + extras.getString("score"));
+            finalScore.setText("Score: " + extras.getString("sford"));
+            finalScore.setText("Score: " + extras.getString("putts"));
+
         }
 
         saveRound.setOnClickListener(new View.OnClickListener() {

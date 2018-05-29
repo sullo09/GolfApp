@@ -150,6 +150,8 @@ public class PlayingRoundCard extends AppCompatActivity {
                 showResults.putExtra("courseName", courseName);
                 showResults.putExtra("playerName", playerName);
                 showResults.putExtra("score", Integer.toString(sumScore));
+                showResults.putExtra("sford", Integer.toString(sumStableford));
+                showResults.putExtra("putts", Integer.toString(sumPutts));
                 startActivity(showResults);
             }
         });

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sullo.golfapp">
 
     <!--
@@ -13,9 +14,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/golfmateiconcircle"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/golfmateiconcircle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -64,7 +65,9 @@
         <activity
             android:name=".RoundResults"
             android:label="Round Review" />
-        <activity android:name=".RecordedYardages"></activity>
+        <activity android:name=".RecordedYardages">
+
+        </activity>
     </application>
 
 </manifest>

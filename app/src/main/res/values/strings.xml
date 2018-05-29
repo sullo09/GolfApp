@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GolfApp</string>
+    <string name="app_name">GolfMate</string>
     <string name="title_activity_maps_courses">Map</string>
 
     <string name="email">Email address</string>

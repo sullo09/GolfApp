@@ -94,7 +94,7 @@
         android:id="@+id/imageView"
         android:layout_width="290dp"
         android:layout_height="175dp"
-        app:srcCompat="@drawable/place_holder"
+        app:srcCompat="@drawable/golfmatelogo"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
