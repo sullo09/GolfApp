@@ -3,6 +3,7 @@ package Adaptor;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
     private List<Shot> shotList;
     private Bundle extras;
 
+
     public ShotAdapter(Context context, List<Shot> shotList) {
         this.context = context;
         this.shotList = shotList;
@@ -48,11 +50,18 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
 
         Shot shot = shotList.get(position);
 
-        holder.titleShot.setText(shot.getTitleShot());
-        holder.timestampShot.setText(shot.getDescription());
+        holder.shot.setText(shot.getTitleShot());
+        //holder.shot.setText("testing");
+//        Log.d("shot","shot");
+
+        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
+        String formattedDate = dateFormat.format(new Date(Long.valueOf(shot.getTimestamp())).getTime());
+        //eg April 17 2017
+//        holder.shotTimestamp.setText(formattedDate);
+//        holder.timestampShot.setText(shot.getDescription());
 //        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
 //        String formattedDate = dateFormat.format(new Date(Long.valueOf(shot.getTimestampShot())).getTime());
-//        holder.timestampShot.setText(formattedDate);
+        holder.timestamp.setText(formattedDate);
     }
 
     @Override
@@ -61,8 +70,8 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleShot;
-        public TextView timestampShot;
+        public TextView shot;
+        public TextView timestamp;
         String shotid;
 
         public ViewHolder(View view, Context ctx) {
@@ -70,10 +79,17 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
 
             context = ctx;
 
-            titleShot = (TextView) view.findViewById(R.id.shot);
-            timestampShot = (TextView) view.findViewById(R.id.shotTimestamp);
+            shot = (TextView) view.findViewById(R.id.shotTitle);
+            timestamp = (TextView) view.findViewById(R.id.shotTimestamp);
 
             shotid = null;
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //go to next activity
+                }
+            });
         }
     }
 }

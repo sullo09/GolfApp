@@ -74,10 +74,10 @@ public class MapsCourses extends FragmentActivity implements OnMapReadyCallback 
         dunLaoghaireGC.setTag(0);
         markerList.add(dunLaoghaireGC);
 
-        woodbrookGC = mMap.addMarker(new MarkerOptions()
-                .position(WoodbrookGC).title("Woodbrook Golf Club"));
-        woodbrookGC.setTag(0);
-        markerList.add(woodbrookGC);
+//        woodbrookGC = mMap.addMarker(new MarkerOptions()
+//                .position(WoodbrookGC).title("Woodbrook Golf Club"));
+//        woodbrookGC.setTag(0);
+//        markerList.add(woodbrookGC);
 
         for (Marker marker : markerList){
             Log.d("Marker", marker.getTitle());

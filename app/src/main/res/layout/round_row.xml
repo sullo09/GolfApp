@@ -25,9 +25,19 @@ android:orientation="vertical">
             android:paddingLeft="14dp"
             android:paddingTop="10dp"
             android:text="Name: "
-            android:textColor="#FF0000"
+            android:textColor="#000000"
             android:textSize="18dp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/playerResultHandicap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:text="Handicap: "
+            android:textColor="#000000"
+            />
 
         <TextView
             android:id="@+id/coursePlayed"
@@ -37,7 +47,7 @@ android:orientation="vertical">
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
             android:text="Course: "
-            android:textColor="#FF0000" />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/playerResultScore"
@@ -46,8 +56,28 @@ android:orientation="vertical">
             android:layout_weight="1"
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
-            android:text="Score: "
-            android:textColor="#FF0000"
+            android:text="Strokes: "
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/playerResultSford"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:text="Stableford: "
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/playerResultPutts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:text="Putts: "
+            android:textColor="#000000"
             />
         <TextView
             android:id="@+id/roundTimestamp"
@@ -57,7 +87,7 @@ android:orientation="vertical">
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
             android:text=""
-            android:textColor="#FF0000"
+            android:textColor="#000000"
             />
 
     </LinearLayout>

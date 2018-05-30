@@ -149,6 +149,7 @@ public class PlayingRoundCard extends AppCompatActivity {
                 Intent showResults = new Intent(PlayingRoundCard.this, RoundResults.class);
                 showResults.putExtra("courseName", courseName);
                 showResults.putExtra("playerName", playerName);
+                showResults.putExtra("handicap", (handicap));
                 showResults.putExtra("score", Integer.toString(sumScore));
                 showResults.putExtra("sford", Integer.toString(sumStableford));
                 showResults.putExtra("putts", Integer.toString(sumPutts));

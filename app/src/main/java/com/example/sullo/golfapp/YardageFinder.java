@@ -2,6 +2,7 @@ package com.example.sullo.golfapp;
 
 //used for the distance measurement
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,15 +12,31 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import Adaptor.ShotAdapter;
 
 public class YardageFinder extends AppCompatActivity{
+
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseUser mUser;
 
 //	private	fields	of	the	class
     private TextView result;
@@ -29,6 +46,8 @@ public class YardageFinder extends AppCompatActivity{
     private Button buttonStart;
     private Button buttonEnd;
     private Button recordShot;
+
+    private ProgressDialog submitProgress;
 
 //first row of buttons
     private Button button4iron,button5iron,button6iron,button7iron,button8iron,button9iron;
@@ -42,6 +61,15 @@ public class YardageFinder extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yardage_finder);
+
+        mAuth = FirebaseAuth.getInstance().getInstance();
+        mUser = mAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Shots");
+        databaseReference.keepSynced(true);
+
+//progress wheel
+        submitProgress = new ProgressDialog(this);
 
         buttonStart = (Button) findViewById(R.id.buttonStart);
         buttonEnd = (Button) findViewById(R.id.buttonEnd);
@@ -72,6 +100,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button4iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 4 Iron";
+                result.setText("Club: 4 Iron");
                 Log.d("button4iron", "4 iron picked");
             }
         });
@@ -80,6 +109,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button5iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 5 Iron";
+                result.setText("Club: 5 Iron");
             }
         });
         button6iron.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +117,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button6iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 6 Iron";
+                result.setText("Club: 6 Iron");
             }
         });
         button7iron.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +125,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button7iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 7 Iron";
+                result.setText("Club: 7 Iron");
             }
         });
         button8iron.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +133,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button8iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 8 Iron";
+                result.setText("Club: 8 Iron");
             }
         });
         button9iron.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +141,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button9iron.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 9 Iron";
+                result.setText("Club: 9 Iron");
             }
         });
         buttonPW.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +149,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 buttonPW.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: PW";
+                result.setText("Club: PW");
             }
         });
         buttonSW.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +157,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 buttonSW.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: SW";
+                result.setText("Club: SW");
             }
         });
         buttonLW.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +165,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 buttonLW.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: LW";
+                result.setText("Club: LW");
             }
         });
         button3R.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +173,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button3R.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 3 Rescue";
+                result.setText("Club: 3 Rescue");
             }
         });
         button3W.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +181,7 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 button3W.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: 3 Wood";
+                result.setText("Club: 3 Wood");
             }
         });
         buttonDriver.setOnClickListener(new View.OnClickListener() {
@@ -150,16 +189,20 @@ public class YardageFinder extends AppCompatActivity{
             public void onClick(View v) {
                 buttonDriver.setBackgroundResource(R.color.clubPickedOff);
                 clubPicked = "Club: Driver";
+                result.setText("Club: Driver");
+
             }
         });
         recordShot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(YardageFinder.this, RecordedYardages.class);
-                String record = result.getText().toString();
-                intent.putExtra("record", String.valueOf(record));
-                startActivity(intent);
-                Log.d("record", String.valueOf(record));
+//                Intent intent = new Intent(YardageFinder.this, RecordedYardages.class);
+//                String record = result.getText().toString();
+//                intent.putExtra("record", String.valueOf(record));
+//                startActivity(intent);
+//                Log.d("record", String.valueOf(record));
+
+                startSubmitting();
 
             }
         });
@@ -231,7 +274,36 @@ public class YardageFinder extends AppCompatActivity{
 //	if GPS has been	disabled then update the textviews to reflect this
             }
         });
+    }
 
+    private void startSubmitting(){
+        submitProgress.setMessage("recording shot ...");
+        submitProgress.show();
+
+
+        String shotValue = result.getText().toString().trim();
+
+        //String scoreDateAddedVal = finalScore.getText().toString().trim();
+
+
+        if(!TextUtils.isEmpty(shotValue)){
+
+            DatabaseReference newShot = databaseReference.push();
+
+            Map<String, String> dataToSave = new HashMap<>();
+            dataToSave.put("shot", shotValue);
+            dataToSave.put("timestamp", String.valueOf(System.currentTimeMillis()));
+            dataToSave.put("shotid", mUser.getUid());
+
+            newShot.setValue(dataToSave);
+            Toast.makeText(getApplicationContext(),"shot added",
+                    Toast.LENGTH_LONG).show();
+
+            submitProgress.dismiss();
+
+            startActivity(new Intent(YardageFinder.this,RecordedYardages.class));
+            finish();
+        }
     }
 }
 

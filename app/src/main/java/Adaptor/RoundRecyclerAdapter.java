@@ -2,6 +2,7 @@ package Adaptor;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,11 @@ public class RoundRecyclerAdapter extends RecyclerView.Adapter<RoundRecyclerAdap
 
         holder.coursePlayed.setText(completedRound.getCoursePlayed());
         holder.playerName.setText(completedRound.getPlayerName());
+        holder.playerHandicap.setText(completedRound.getplayerHandicap());
         holder.playerScore.setText(completedRound.getPlayerScore());
+//        holder.playerScoreSford.setText("test");
+        holder.playerScoreSford.setText(completedRound.getPlayerScoreSford());
+        holder.playerPutts.setText(completedRound.getPlayerPutts());
 
         java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
         String formattedDate = dateFormat.format(new Date(Long.valueOf(completedRound.getTimestamp())).getTime());
@@ -61,7 +66,11 @@ public class RoundRecyclerAdapter extends RecyclerView.Adapter<RoundRecyclerAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView playerName ;
         public TextView coursePlayed;
+        public TextView playerHandicap;
         public TextView playerScore;
+        public TextView playerScoreSford;
+        public TextView playerPutts;
+
         public TextView timestamp;
         String userid;
 
@@ -73,6 +82,9 @@ public class RoundRecyclerAdapter extends RecyclerView.Adapter<RoundRecyclerAdap
             playerName = (TextView) view.findViewById(R.id.playerNameResult);
             coursePlayed = (TextView) view.findViewById(R.id.coursePlayed);
             playerScore = (TextView) view.findViewById(R.id.playerResultScore);
+            playerHandicap = (TextView) view.findViewById(R.id.playerResultHandicap);
+            playerScoreSford = (TextView) view.findViewById(R.id.playerResultSford);
+            playerPutts = (TextView) view.findViewById(R.id.playerResultPutts);
             timestamp = (TextView) view.findViewById(R.id.roundTimestamp);
 
             userid = null;

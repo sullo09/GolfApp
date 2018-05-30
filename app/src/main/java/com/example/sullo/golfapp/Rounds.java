@@ -26,6 +26,7 @@ public class Rounds extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mUser;
+
     private RoundRecyclerAdapter roundRecyclerAdapter;
     private RecyclerView RoundsRecyclerView;
     private List<CompletedRound> completedRoundList;

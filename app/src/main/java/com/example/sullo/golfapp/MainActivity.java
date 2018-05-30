@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(mUser != null){
 //user signed in
-                    Toast.makeText(MainActivity.this, "Signedddddd in", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Signed in", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this, MainScreen.class));
                 }
                 else{

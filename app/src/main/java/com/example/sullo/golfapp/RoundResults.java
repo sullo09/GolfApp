@@ -40,6 +40,7 @@ public class RoundResults extends AppCompatActivity {
     private TextView finalScoreDateAdded;
     private TextView finalScoreSford;
     private TextView finalScorePutts;
+    private TextView finalHandicap;
     private Button saveRound;
     private Bundle extras;
 
@@ -60,6 +61,8 @@ public class RoundResults extends AppCompatActivity {
 //progress wheel
         submitProgress = new ProgressDialog(this);
 
+
+        finalHandicap = (EditText) findViewById(R.id.finalHandicap);
         finalScoreSford = (EditText) findViewById(R.id.finalScoreSford);
         finalScorePutts = (EditText) findViewById(R.id.finalScorePutts);
         finalScore = (EditText) findViewById(R.id.finalScore);
@@ -70,6 +73,7 @@ public class RoundResults extends AppCompatActivity {
 
         finalScoreCourse.setText("RoundCourses: ");
         finalScoreName.setText("Name: ");
+        finalHandicap.setText("Handicap: ");
         finalScore.setText("Strokes Score: ");
         finalScoreSford.setText("Stableford Score: ");
         finalScorePutts.setText("Total Putts: ");
@@ -79,9 +83,10 @@ public class RoundResults extends AppCompatActivity {
         if (extras != null) {
             finalScoreCourse.setText("Course: " + extras.getString( "courseName"));
             finalScoreName.setText("Name: " + extras.getString("playerName"));
-            finalScore.setText("Score: " + extras.getString("score"));
-            finalScore.setText("Score: " + extras.getString("sford"));
-            finalScore.setText("Score: " + extras.getString("putts"));
+            finalHandicap.setText("Handicap: " + extras.getString("handicap"));
+            finalScore.setText("Strokes: " + extras.getString("score"));
+            finalScoreSford.setText("Stableford Points: " + extras.getString("sford"));
+            finalScorePutts.setText("Total Putts: " + extras.getString("putts"));
 
         }
 
@@ -100,19 +105,29 @@ public class RoundResults extends AppCompatActivity {
 
         String scoreCourseVal = finalScoreCourse.getText().toString().trim();
         String scoreNameVal = finalScoreName.getText().toString().trim();
+        String scoreHandicapVal = finalHandicap.getText().toString().trim();
         String scoreValueVal = finalScore.getText().toString().trim();
+        String scoreValueSfordVal = finalScoreSford.getText().toString().trim();
+        String scoreValuePuttVal = finalScorePutts.getText().toString().trim();
+
         //String scoreDateAddedVal = finalScore.getText().toString().trim();
 
 
         if(!TextUtils.isEmpty(scoreCourseVal) && !TextUtils.isEmpty(scoreNameVal) &&
-                !TextUtils.isEmpty(scoreValueVal)){
+                 !TextUtils.isEmpty(scoreHandicapVal) &&
+                 !TextUtils.isEmpty(scoreValueVal) &&
+                 !TextUtils.isEmpty(scoreValueSfordVal) &&
+                 !TextUtils.isEmpty(scoreValuePuttVal)){
 
             DatabaseReference newRound = databaseReference.push();
 
             Map<String, String> dataToSave = new HashMap<>();
             dataToSave.put("coursePlayed", scoreCourseVal);
             dataToSave.put("playerName", scoreNameVal);
+            dataToSave.put("playerHandicap", scoreHandicapVal);
             dataToSave.put("playerScore", scoreValueVal);
+            dataToSave.put("playerScoreSford", scoreValueSfordVal);
+            dataToSave.put("playerPutts", scoreValuePuttVal);
             dataToSave.put("timestamp", String.valueOf(System.currentTimeMillis()));
             dataToSave.put("userid", mUser.getUid());
 

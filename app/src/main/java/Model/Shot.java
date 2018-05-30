@@ -7,14 +7,15 @@ package Model;
 public class Shot {
 
     public String titleShot;
-    public String description;
+    public String timestamp;
     public int shotid;
 
     public Shot() {}
 
-    public Shot(String titleShot, String description) {
+    public Shot(String titleShot, String timestamp, int shotid) {
         this.titleShot = titleShot;
-        this.description = description;
+        this.timestamp = timestamp;
+        this.shotid = shotid;
     }
 
     public String getTitleShot() {
@@ -25,12 +26,12 @@ public class Shot {
         this.titleShot = titleShot;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     public int getShotid() {
