@@ -130,7 +130,7 @@ public class PlayingRoundCard extends AppCompatActivity {
         green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent showGreen = new Intent(PlayingRoundCard.this, MapsCourses.class);
+                Intent showGreen = new Intent(PlayingRoundCard.this, Greens.class);
                 startActivity(showGreen);
             }
         });

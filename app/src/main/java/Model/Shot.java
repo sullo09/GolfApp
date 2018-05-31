@@ -6,24 +6,25 @@ package Model;
 
 public class Shot {
 
-    public String titleShot;
+    public String shot;
     public String timestamp;
-    public int shotid;
+
+    public String shotid;
 
     public Shot() {}
 
-    public Shot(String titleShot, String timestamp, int shotid) {
-        this.titleShot = titleShot;
+    public Shot(String shot, String timestamp, String shotid) {
+        this.shot = shot;
         this.timestamp = timestamp;
         this.shotid = shotid;
     }
 
-    public String getTitleShot() {
-        return titleShot;
+    public String getshot() {
+        return shot;
     }
 
-    public void setTitleShot(String titleShot) {
-        this.titleShot = titleShot;
+    public void setshot(String shot) {
+        this.shot = shot;
     }
 
     public String getTimestamp() {
@@ -34,11 +35,12 @@ public class Shot {
         this.timestamp = timestamp;
     }
 
-    public int getShotid() {
+    public String getShotid() {
         return shotid;
     }
 
-    public void setShotid(int shotid) {
+    public void setShotid(String shotid) {
         this.shotid = shotid;
     }
+
 }

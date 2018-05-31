@@ -71,7 +71,7 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked Groups", Toast.LENGTH_LONG).show();
-                Intent groups = new Intent(MainScreen.this, Rounds.class);
+                Intent groups = new Intent(MainScreen.this, Groups.class);
                 startActivity(groups);
             }
         });
@@ -79,7 +79,7 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MainScreen.this, "Clicked My Profile", Toast.LENGTH_LONG).show();
-                Intent myProfile = new Intent(MainScreen.this, Rounds.class);
+                Intent myProfile = new Intent(MainScreen.this, MyProfile.class);
                 startActivity(myProfile);
             }
         });

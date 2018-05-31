@@ -50,8 +50,8 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
 
         Shot shot = shotList.get(position);
 
-        holder.shot.setText(shot.getTitleShot());
-        //holder.shot.setText("testing");
+        holder.shotTaken.setText(shot.getshot());
+        //holder.shotTaken.setText("testing");
 //        Log.d("shot","shot");
 
         java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
@@ -70,7 +70,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView shot;
+        public TextView shotTaken;
         public TextView timestamp;
         String shotid;
 
@@ -79,7 +79,7 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.ViewHolder>{
 
             context = ctx;
 
-            shot = (TextView) view.findViewById(R.id.shotTitle);
+            shotTaken = (TextView) view.findViewById(R.id.shotTaken);
             timestamp = (TextView) view.findViewById(R.id.shotTimestamp);
 
             shotid = null;

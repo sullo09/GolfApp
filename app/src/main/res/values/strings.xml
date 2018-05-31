@@ -63,6 +63,7 @@
     <!-- tips dialog box start -->
     <string name="tipsTitle">Course Tips</string>
     <string name="BackToScoreCard">Back To Score Card</string>
+    <string name="title_activity_greens">Map</string>
 
     <!-- tips dialog box end -->
 

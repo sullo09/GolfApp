@@ -1,95 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical">
-
-<android.support.v7.widget.CardView
-    android:id="@+id/cardviewRound"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/cardview_compat_inset_shadow">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="25dp">
+        android:padding="5dp">
 
-        <TextView
-            android:id="@+id/playerNameResult"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardviewRound"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="10dp"
-            android:text="Name: "
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/playerResultHandicap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text="Handicap: "
-            android:textColor="#000000"
-            />
+            android:layout_margin="@dimen/cardview_compat_inset_shadow">
 
-        <TextView
-            android:id="@+id/coursePlayed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text="Course: "
-            android:textColor="#000000" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
 
-        <TextView
-            android:id="@+id/playerResultScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text="Strokes: "
-            android:textColor="#000000"
-            />
-        <TextView
-            android:id="@+id/playerResultSford"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text="Stableford: "
-            android:textColor="#000000"
-            />
-        <TextView
-            android:id="@+id/playerResultPutts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text="Putts: "
-            android:textColor="#000000"
-            />
-        <TextView
-            android:id="@+id/roundTimestamp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp"
-            android:text=""
-            android:textColor="#000000"
-            />
+                <TextView
+                    android:id="@+id/playerNameResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                     />
+                <TextView
+                    android:id="@+id/playerResultHandicap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Handicap: "
+                    android:textColor="#000000"
+                    android:layout_below="@+id/playerNameResult"
+                    />
 
+                <TextView
+                    android:id="@+id/coursePlayed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Course: "
+                    android:textColor="#000000"
+                    android:layout_below="@+id/playerResultHandicap"/>
+
+                <TextView
+                    android:id="@+id/playerResultScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Strokes: "
+                    android:textColor="#000000"
+                    android:layout_below="@+id/coursePlayed"/>
+                <TextView
+                    android:id="@+id/playerResultSford"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stableford: "
+                    android:textColor="#000000"
+                    android:layout_below="@+id/playerResultScore"/>
+                <TextView
+                    android:id="@+id/playerResultPutts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Putts: "
+                    android:textColor="#000000"
+                    android:layout_below="@+id/playerResultSford"/>
+                <TextView
+                    android:id="@+id/roundTimestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:layout_below="@+id/playerResultPutts"
+                    />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
-</android.support.v7.widget.CardView>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

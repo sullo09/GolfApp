@@ -46,6 +46,7 @@ public class YardageFinder extends AppCompatActivity{
     private Button buttonStart;
     private Button buttonEnd;
     private Button recordShot;
+    private Button prevShots;
 
     private ProgressDialog submitProgress;
 
@@ -65,12 +66,13 @@ public class YardageFinder extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance().getInstance();
         mUser = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Shots");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Shot");
         databaseReference.keepSynced(true);
 
 //progress wheel
         submitProgress = new ProgressDialog(this);
 
+        prevShots = (Button) findViewById(R.id.prevShots);
         buttonStart = (Button) findViewById(R.id.buttonStart);
         buttonEnd = (Button) findViewById(R.id.buttonEnd);
         recordShot = (Button) findViewById(R.id.recordShot);
@@ -191,6 +193,13 @@ public class YardageFinder extends AppCompatActivity{
                 clubPicked = "Club: Driver";
                 result.setText("Club: Driver");
 
+            }
+        });
+        prevShots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shotResult = new Intent(YardageFinder.this, RecordedYardages.class);
+                startActivity(shotResult);
             }
         });
         recordShot.setOnClickListener(new View.OnClickListener() {

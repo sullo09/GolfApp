@@ -4,7 +4,7 @@
 		"hole1":"hole 1",
 		"par":"4",
 		"index":"6",
-		"tips":"bunker on right hand side",
+		"tips":"Tough opening hole.\nAvoid bunker on the right hand side.\nGreen slope heavily from back to front. Do not miss long.",
 		"imageLocation":"hole1",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":375,"Yellow":362,"red":352}
@@ -13,7 +13,7 @@
 		"hole":"hole 2",
 		"par":"3",
 		"index":"7",
-		"tips":"best place to miss is short",
+		"tips":"Long par 3 but doesn't play full yardage.\nBest place to miss is short.Take a 3 every time",
 		"imageLocation":"hole2",
 		"location":{"Latitude":53.211216,"Longitude":-6.142971},
 		"tees":{"white":236,"Yellow":219,"red":163}
@@ -22,7 +22,7 @@
 		"hole":"hole 3",
 		"par":"4",
 		"index":"13",
-		"tips":"second shot always plays longer",
+		"tips":"Safe play is to lay up short of bunker.\nTricky second shot and it always plays about 5/10 yards longer.\nVery difficult up and down if green is missed",
 		"imageLocation":"hole3",
 		"location":{"Latitude":53.213039,"Longitude":-6.145115},
 		"tees":{"white":323,"Yellow":312,"red":249}
@@ -31,7 +31,7 @@
 		"hole":"hole 4",
 		"par":"5",
 		"index":"11",
-		"tips":"second shot always plays longer",
+		"tips":"Avoid bunker off tee.\nLonger hitters can reach in two and this sets up a nice birdie chance.\nLay up is just past bunker on left",
 		"imageLocation":"hole4",
 		"location":{"Latitude":53.216077,"Longitude":-6.138668},
 		"tees":{"white":539,"Yellow":528,"red":461}
@@ -40,7 +40,7 @@
 		"hole":"hole 5",
 		"par":"5",
 		"index":"2",
-		"tips":"second shot always plays longer",
+		"tips":"Long Par 5. Very tough drive.\nAvoid bunkers at all cost.\n Hazard just short of green so be careful when laying up.",
 		"imageLocation":"hole5",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":583,"Yellow":564,"red":441}

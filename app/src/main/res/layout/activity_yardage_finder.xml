@@ -15,16 +15,16 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/golfballstart"
         app:layout_constraintBottom_toTopOf="@+id/tableRow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
+        app:layout_constraintTop_toBottomOf="@+id/tableRow3" />
 
 
     <TableRow
+        android:id="@+id/tableRow2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -32,23 +32,21 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/button4iron"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#ffffff"
-            android:text="4"
-            />
+            android:text="4" />
 
         <Button
             android:id="@+id/button5iron"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#ffffff"
-            android:text="5"
-            />
+            android:text="5" />
 
         <Button
             android:id="@+id/button6iron"
@@ -81,6 +79,7 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -103,6 +102,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#ffffff"
             android:text="SW" />
+
         <Button
             android:id="@+id/buttonLW"
             android:layout_width="46dp"
@@ -135,50 +135,62 @@
 
     <TableRow
         android:id="@+id/tableRow"
-        android:layout_width="wrap_content"
+        android:layout_width="382dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="280dp"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649">
+        app:layout_constraintVertical_bias="0.658">
 
         <Button
 
             android:id="@+id/buttonStart"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:text="Start Shot"
             android:layout_margin="10dp"
-            android:textColor="#ffffff"
             android:background="#353535"
             android:padding="10dp"
-            />
+            android:text="Start Shot"
+            android:textColor="#ffffff"
+            android:textSize="10dp" />
 
         <Button
+
             android:id="@+id/buttonEnd"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#353535"
+            android:padding="10dp"
             android:text="Finish Shot"
             android:textColor="#ffffff"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/prevShots"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:background="#353535"
-            />
+            android:padding="10dp"
+            android:text="Previous shots"
+            android:textColor="#ffffff"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/recordShot"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:background="#ff0000"
+            android:background="#15ff00"
             android:padding="10dp"
             android:text="Record Shot"
-            android:textColor="#ffffff" />
+            android:textColor="#000000"
+            android:textSize="10dp" />
     </TableRow>
 
     <TextView

@@ -65,9 +65,12 @@
         <activity
             android:name=".RoundResults"
             android:label="Round Review" />
-        <activity android:name=".RecordedYardages">
-
-        </activity>
+        <activity android:name=".RecordedYardages" />
+        <activity android:name=".MyProfile" />
+        <activity android:name=".Groups" />
+        <activity
+            android:name=".Greens"
+            android:label="@string/title_activity_greens"></activity>
     </application>
 
 </manifest>
