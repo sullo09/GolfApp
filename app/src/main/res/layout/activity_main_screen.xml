@@ -119,7 +119,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="22dp"
                     android:layout_marginStart="22dp"
-                    app:srcCompat="@drawable/newround" />
+                    app:srcCompat="@drawable/myrounds" />
 
                 <TextView
                     android:id="@+id/roundsText"

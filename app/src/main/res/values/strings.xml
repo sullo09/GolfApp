@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">GolfMate</string>
+
+    <!-- strings for shared preferences in myProfile start -->
+    <string name="name_profile">com.example.sullo.golfapp.SharedPreferences.fname</string>
+    <string name="surname">com.example.sullo.golfapp.SharedPreferences.surname</string>
+    <string name="exact_start">com.example.sullo.golfapp.SharedPreferences.exactStart</string>
+    <string name="exact_end">com.example.sullo.golfapp.SharedPreferences.exactEnd</string>
+    <!-- strings for shared preferences in myProfile end -->
+
     <string name="title_activity_maps_courses">Map</string>
 
     <string name="email">Email address</string>
@@ -64,7 +72,6 @@
     <string name="tipsTitle">Course Tips</string>
     <string name="BackToScoreCard">Back To Score Card</string>
     <string name="title_activity_greens">Map</string>
-
     <!-- tips dialog box end -->
 
 

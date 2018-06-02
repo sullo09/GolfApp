@@ -14,9 +14,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/golfmateiconcircle"
+        android:icon="@drawable/golfmatecircle"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/golfmateiconcircle"
+        android:roundIcon="@drawable/golfmatecircle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
