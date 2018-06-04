@@ -35,6 +35,8 @@ public class MyProfile extends AppCompatActivity {
         profileLastName = (EditText) findViewById(R.id.profileLastName);
         saveProfile = (Button) findViewById(R.id.saveProfile);
 
+        profileFirstName.setText("First Name: ");
+
         readPreferences();
 
 //saving info with shared preferences

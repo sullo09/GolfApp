@@ -40,7 +40,7 @@
 		"hole":"hole 5",
 		"par":"5",
 		"index":"2",
-		"tips":"Long Par 5. Very tough drive.\nAvoid bunkers at all cost.\n Hazard just short of green so be careful when laying up.",
+		"tips":"Long Par 5. Very tough drive.\nAvoid bunkers at all cost.\nHazard just short of green so be careful when laying up.",
 		"imageLocation":"hole5",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":583,"Yellow":564,"red":441}
@@ -49,7 +49,7 @@
 		"hole":"hole 6",
 		"par":"4",
 		"index":"4",
-		"tips":"second shot always plays longer",
+		"tips":"Drive just left of the tree.\nSecond shot up hill and plays 10 yards longer.\nTrouble over the back so don't go long and right.",
 		"imageLocation":"hole6",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":378,"Yellow":364,"red":316}
@@ -58,7 +58,7 @@
 		"hole":"hole 7",
 		"par":"4",
 		"index":"8",
-		"tips":"second shot always plays longer",
+		"tips":"240 yards to the corner.\nSecond shot up hill and plays 10 yards longer.\nTricky green. LEave ball below pin on approach",
 		"imageLocation":"hole7",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":381,"Yellow":365,"red":351}
@@ -67,7 +67,7 @@
 		"hole":"hole 8",
 		"par":"3",
 		"index":"18",
-		"tips":"second shot always plays longer",
+		"tips":"Tricky short par 3.\nDo not go long as you are dead.\nAnywhere on the green will give you a good chance at birdie ",
 		"imageLocation":"hole8",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":118,"Yellow":110,"red":98}
@@ -76,7 +76,7 @@
 		"hole":"hole 9",
 		"par":"4",
 		"index":"15",
-		"tips":"second shot always plays longer",
+		"tips":"Sensible play is to hit something short of the bunker on the right.\nWedge in from there.\nDown wind big hitters can have a go at the green.",
 		"imageLocation":"hole9",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":329,"Yellow":316,"red":302}
@@ -85,7 +85,7 @@
 		"hole":"hole 10",
 		"par":"4",
 		"index":"17",
-		"tips":"second shot always plays longer",
+		"tips":"Short par 4. slight dog leg left.\nKeep ball away from trees on the right.\nDriver not needed here but if used keep it down the left.",
 		"imageLocation":"hole10",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":346,"Yellow":334,"red":318}
@@ -94,7 +94,7 @@
 		"hole":"hole 11",
 		"par":"4",
 		"index":"9",
-		"tips":"second shot always plays longer",
+		"tips":"Dog leg right. Keep drive just left of big tree. Two tier green. \nNeed to get it onto correct level to have any chance of birdie.",
 		"imageLocation":"hole11",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":350,"Yellow":342,"red":273}
@@ -103,7 +103,7 @@
 		"hole":"hole 12",
 		"par":"3",
 		"index":"16",
-		"tips":"second shot always plays longer",
+		"tips":"Nice par 3. Plays a little shorter down hill.\nlike 8 andwhere on the green gives you a chance.",
 		"imageLocation":"hole12",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":170,"Yellow":156,"red":139}
@@ -112,7 +112,7 @@
 		"hole":"hole 13",
 		"par":"5",
 		"index":"5",
-		"tips":"second shot always plays longer",
+		"tips":"Keep  drive down the right as everything kicks left.\nLay up to the top of the hill.\nCrazy fast green so leave approach shot below hole. ",
 		"imageLocation":"hole13",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":562,"Yellow":553,"red":477}
@@ -121,7 +121,7 @@
 		"hole":"hole 14",
 		"par":"4",
 		"index":"10",
-		"tips":"second shot always plays longer",
+		"tips":"Tee shot is only a 200 yard lay up.\nSecond shot is over water to a tricky green.\nAgain leave urself below hole.",
 		"imageLocation":"hole14",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":313,"Yellow":303,"red":295}
@@ -130,7 +130,7 @@
 		"hole":"hole 15",
 		"par":"4",
 		"index":"1",
-		"tips":"second shot always plays longer",
+		"tips":"Adviced to look at 16th green for pin before you drive as you can see it on approach shot. \n15 is a Tough drive. Try hit left hand side of fairway.\nLong but straight forward approach shot.\ntake 4 every time.",
 		"imageLocation":"hole15",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":471,"Yellow":461,"red":309}
@@ -139,7 +139,7 @@
 		"hole":"hole 16",
 		"par":"4",
 		"index":"3",
-		"tips":"second shot always plays longer",
+		"tips":"Keep drive up the right as everything kicks left. Blind second shot.\nAlways take an extra club and aim for lollypop stick.",
 		"imageLocation":"hole16",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":431,"Yellow":421,"red":316}
@@ -148,7 +148,7 @@
 		"hole":"hole 17",
 		"par":"3",
 		"index":"12",
-		"tips":"second shot always plays longer",
+		"tips":"Crazy green. Do not finish above hole\ntee shot plays up hill and one club more.",
 		"imageLocation":"hole17",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":156,"Yellow":149,"red":143}
@@ -157,7 +157,7 @@
 		"hole":"hole 18",
 		"par":"5",
 		"index":"14",
-		"tips":"second shot always plays longer",
+		"tips":"Drive is crucial. Ob left and right.\nHit the fairway and its a great chance to finish with a birdie.\nYou can go for green in two but be aware of Ob down the left.",
 		"imageLocation":"hole18",
 		"location":{"Latitude":53.213233,"Longitude":-6.142819},
 		"tees":{"white":510,"Yellow":484,"red":470}

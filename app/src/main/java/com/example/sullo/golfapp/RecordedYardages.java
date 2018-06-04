@@ -56,7 +56,7 @@ public class RecordedYardages extends AppCompatActivity {
 
     }
 
-    //used so everything is set up before the onCreate runs.
+//used so everything is set up before the onCreate runs.
     @Override
     protected void onStart() {
         super.onStart();
@@ -96,22 +96,3 @@ public class RecordedYardages extends AppCompatActivity {
         });
     }
 }
-
-//
-//    Bundle bundle= getIntent().getExtras();
-//        String record = bundle.getString("record");
-//
-//        shotList = new ArrayList<>();
-//
-////        Shot shot = new Shot(record,"180");
-////        shotList.add(shot);
-////        Log.d("shotList","shot recording");
-//        for (int i = 0; i < 5; i++) {
-//            Shot shot = new Shot(
-//                    record + (i+1),
-//                    "description"
-//            );
-//            shotList.add(shot);
-//        }
-//        adapter = new ShotAdapter(this, shotList);
-//        recyclerView.setAdapter(adapter);

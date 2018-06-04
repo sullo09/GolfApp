@@ -199,6 +199,7 @@ public class PlayingRoundCard extends AppCompatActivity {
 
                     while(x.hasNext()){
                         String key = (String) x.next();
+//CourseInfo is a new json array
                         CourseInfo.put(courseDetails.get(key));
                     }
                     testList = new int[CourseInfo.length()];
@@ -216,7 +217,7 @@ public class PlayingRoundCard extends AppCompatActivity {
         }
     }
 
-    //sets the screen to according hole
+//sets the screen to according hole
     public void SetScreen (){
         try {
             JSONObject HoleInfo = CourseInfo.getJSONObject(NumberOfHole - 1);
@@ -313,7 +314,6 @@ public class PlayingRoundCard extends AppCompatActivity {
 
         // CourseInfo is the number of holes
         // This is set at the start when the json is parsed
-        // This can't be hard cored as some course have only 9 holes
         sumStableford = 0;
         sumScore = 0;
         sumPutts = 0;

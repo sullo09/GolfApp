@@ -98,7 +98,10 @@ public class MainScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mAuth != null && mUser != null){
             mAuth.signOut();
-            startActivity(new Intent(MainScreen.this, MainActivity.class));
+            Intent signout = new Intent(MainScreen.this, MainActivity.class);
+            signout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(signout);
+            //startActivity(new Intent(MainScreen.this, MainActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

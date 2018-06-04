@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mUser;
-    private static final String TAG = "MainActivity";
 
     /*Fields for app interface start*/
     private EditText LoginEmail;
@@ -52,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
 /* instantiate*/
@@ -73,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         });
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-//Creates a new database for users called message
-        databaseReference = database.getReference("message");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -102,9 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(LoginEmail.getText().toString())&&
                         !TextUtils.isEmpty(LoginPassword.getText().toString())) {
                     String email = LoginEmail.getText().toString();
-                    String pwd = LoginPassword.getText().toString();
+                    String passwordd = LoginPassword.getText().toString();
 
-                    login(email, pwd);
+                    login(email, passwordd);
+
                 }
                 else {
                 }
@@ -112,19 +108,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-
-
     //login method
-    private void login(String email, String pwd) {
-        mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+    private void login(String email, String passwordd) {
+        mAuth.signInWithEmailAndPassword(email,passwordd).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 //Where Logged in.. passed main activity as we are inside the object
-                    Toast.makeText(MainActivity.this, "Signed innnn", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Signed in", Toast.LENGTH_LONG).show();
 //login to main menu page
                     Intent startMainMenu = new Intent(MainActivity.this, MainScreen.class);
                     startActivity(startMainMenu);
@@ -136,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //how to logout from menu using item
+//how to logout from menu using item
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.signout){
@@ -153,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    //when app starts up
+//when app starts up if you haven't logged out you be logged in
     @Override
     protected void onStart() {
         super.onStart();

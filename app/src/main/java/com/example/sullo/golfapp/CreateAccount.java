@@ -57,7 +57,7 @@ public class CreateAccount extends AppCompatActivity {
     public void createNewAcccount(){
         final String firstName = firstNameCreateAcc.getText().toString().trim();
         final String lastName = lastNameCreateAcc.getText().toString().trim();
-        String email = emailCreateAcc.getText().toString().trim();
+        final String email = emailCreateAcc.getText().toString().trim();
         String password = passwordAcc.getText().toString().trim();
 
         if(!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName) &&
@@ -66,14 +66,16 @@ public class CreateAccount extends AppCompatActivity {
             mProgressDialog.setMessage("Creating your account");
             mProgressDialog.show();
 
+//createUserWithEmailAndPassword is a firebase method. mAuth lets you access it.
             mAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     if (authResult != null) {
                         String userId = mAuth.getCurrentUser().getUid();
                         DatabaseReference currentUser = mDatabaseReference.child(userId);
-                        currentUser.child("firstName").setValue(firstName);
-                        currentUser.child("lastName").setValue(lastName);
+                        currentUser.child("First Name").setValue(firstName);
+                        currentUser.child("Surname").setValue(lastName);
+                        currentUser.child("email").setValue(email);
 
                         mProgressDialog.dismiss();
 

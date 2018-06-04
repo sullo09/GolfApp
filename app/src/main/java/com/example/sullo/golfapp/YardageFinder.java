@@ -9,7 +9,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,7 +40,7 @@ public class YardageFinder extends AppCompatActivity{
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mUser;
 
-//	private	fields	of	the	class
+    //  private fields  of  the class
     private TextView result;
     private String clubPicked;
     private LocationManager lm;
@@ -50,9 +52,9 @@ public class YardageFinder extends AppCompatActivity{
 
     private ProgressDialog submitProgress;
 
-//first row of buttons
+    //first row of buttons
     private Button button4iron,button5iron,button6iron,button7iron,button8iron,button9iron;
-//second row of buttons
+    //second row of buttons
     private Button buttonPW,buttonSW,buttonLW,button3R,button3W,buttonDriver;
 
     Location loc1 = new Location("");
@@ -216,12 +218,12 @@ public class YardageFinder extends AppCompatActivity{
             }
         });
 
-//	add in the location listener
+//  add in the location listener
         addLocationListener();
 
     }
 
- //	private	method that	will add a location	listener to	the	location manager
+    // private method that will add a location listener to the location manager
     private void addLocationListener() {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -232,39 +234,44 @@ public class YardageFinder extends AppCompatActivity{
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+            ActivityCompat.requestPermissions(this, new String[]
+                    {android.Manifest.permission.ACCESS_FINE_LOCATION},1);
+
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 5, new LocationListener() {
+        else {
+
+        }
+       lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 5, new LocationListener() {
             @Override
             public void onLocationChanged(final Location location) {
 // record location of first point
-                    buttonStart.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            imageStart.setBackgroundResource(R.drawable.golfballend);
-                            //imageStart.setImageResource(R.drawable.golfballend);
-                            loc1.setLatitude(location.getLatitude());
-                            loc1.setLongitude(location.getLongitude());
-                            Log.d(String.valueOf(loc1), "Point one");
-                        }
-                    });
-                    buttonEnd.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            imageStart.setBackgroundResource(R.drawable.golfballstart);
-                            loc2.setLatitude(location.getLatitude());
-                            loc2.setLongitude(location.getLongitude());
-                            Log.d(String.valueOf(loc2), "Point two");
+                buttonStart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        imageStart.setBackgroundResource(R.drawable.golfballend);
+                        //imageStart.setImageResource(R.drawable.golfballend);
+                        loc1.setLatitude(location.getLatitude());
+                        loc1.setLongitude(location.getLongitude());
+                        Log.d(String.valueOf(loc1), "Point one");
+                    }
+                });
+                buttonEnd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        imageStart.setBackgroundResource(R.drawable.golfballstart);
+                        loc2.setLatitude(location.getLatitude());
+                        loc2.setLongitude(location.getLongitude());
+                        Log.d(String.valueOf(loc2), "Point two");
 
-                            final float distanceInMeters = loc1.distanceTo(loc2);
+                        final float distanceInMeters = loc1.distanceTo(loc2);
 
-                            double distanceInYards = distanceInMeters * 1.09361;
-                            Log.d(String.valueOf(distanceInYards), "Point final");
+                        double distanceInYards = distanceInMeters * 1.09361;
+                        Log.d(String.valueOf(distanceInYards), "Point final");
 
-                            result.setText(clubPicked + "  Distance: " + Math.round(distanceInYards) + " Yards");
+                        result.setText(clubPicked + "  Distance: " + Math.round(distanceInYards) + " Yards");
 
-                        }
-                    });
+                    }
+                });
             }
 
             @Override
@@ -274,17 +281,32 @@ public class YardageFinder extends AppCompatActivity{
 
             @Override
             public void onProviderEnabled(String provider) {
-//	if there is	a last known location then set it on the textviews
+//  if there is a last known location then set it on the textviews
 
             }
 
             @Override
             public void onProviderDisabled(String provider) {
-//	if GPS has been	disabled then update the textviews to reflect this
+//  if GPS has been disabled then update the textviews to reflect this
             }
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length>0 && grantResults[0]
+                == PackageManager.PERMISSION_GRANTED){
+
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED);
+
+//                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+//                        1, 5, (LocationListener) lm);
+        }
+    }
     private void startSubmitting(){
         submitProgress.setMessage("recording shot ...");
         submitProgress.show();
